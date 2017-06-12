@@ -8,7 +8,8 @@ notifications:
 node_js:
   - '8'
 before_install:
-  - apt-get install libvips
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libvips
 after_success:
   - npm run semantic-release
 branches:
