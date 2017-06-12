@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = {
   attach: function attach(app) {
     app.actions.sharpen = (image, metadata, config, callback) => {

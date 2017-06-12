@@ -1,9 +1,15 @@
-import sharp from 'sharp';
+'use strict';
+
+var _sharp = require('sharp');
+
+var _sharp2 = _interopRequireDefault(_sharp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = {
   attach: function attach(app) {
     app.actions.define_canvas = (image, metadata, config, callback) => {
-      const canvas = sharp(null, {
+      const canvas = (0, _sharp2.default)(null, {
         create: {
           width: config.width,
           height: config.height,

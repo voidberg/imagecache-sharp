@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = {
   attach: function attach(app) {
     app.actions.normalize = (image, metadata, config, callback) => {

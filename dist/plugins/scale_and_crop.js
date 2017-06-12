@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   attach: function attach(app) {
     app.actions.scale_and_crop = (image, metadata, config, callback) => {

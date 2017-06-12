@@ -1,7 +1,18 @@
-import { readdirSync, accessSync, constants } from 'fs';
-import { resolve } from 'path';
-import sharp from 'sharp';
-import async from 'async';
+'use strict';
+
+var _fs = require('fs');
+
+var _path = require('path');
+
+var _sharp = require('sharp');
+
+var _sharp2 = _interopRequireDefault(_sharp);
+
+var _async = require('async');
+
+var _async2 = _interopRequireDefault(_async);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = class ImageCache {
   /**
@@ -16,7 +27,7 @@ module.exports = class ImageCache {
     this.actions = {};
     this.pluginNames = [];
 
-    readdirSync(resolve(__dirname, './plugins/')).forEach(file => {
+    (0, _fs.readdirSync)((0, _path.resolve)(__dirname, './plugins/')).forEach(file => {
       let name;
       let plugin;
 
@@ -73,7 +84,7 @@ module.exports = class ImageCache {
     let sharpInstance;
 
     try {
-      sharpInstance = sharp(image);
+      sharpInstance = (0, _sharp2.default)(image);
     } catch (sharpErr) {
       callback(sharpErr);
     }
@@ -83,7 +94,7 @@ module.exports = class ImageCache {
     return sharpInstance.metadata().then(info => {
       metadata = info;
 
-      async.each(preset.actions, (action, asyncCallback) => {
+      _async2.default.each(preset.actions, (action, asyncCallback) => {
         if (!this.actions[action.action]) {
           return asyncCallback(new Error(`Action ${action.action} for preset ${presetName} not found in loaded plugins.`));
         }

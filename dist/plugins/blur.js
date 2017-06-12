@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = {
   attach: function attach(app) {
     app.actions.blur = (image, metadata, config, callback) => {

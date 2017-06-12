@@ -1,3 +1,5 @@
+'use strict';
+
 /* eslint no-bitwise: ["error", { "allow": ["~"] }] */
 const S = require('string');
 
