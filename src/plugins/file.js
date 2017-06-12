@@ -4,7 +4,7 @@ module.exports = {
       const filepath = config.path;
 
       const options = {
-        gravity: config.gravity,
+        gravity: config.gravity || 'center',
         tile: config.tile || false,
         cutout: config.cutout || false,
       };

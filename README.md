@@ -83,15 +83,113 @@ The render callback returns a `sharp` instance which can be used in various ways
 
 ## Imagecache actions:
 
-* Blur [✓]
-* Define canvas [✓]
-* File [✓]
-* Flip [✓]
-* Gamma [✓]
-* Greyscale [✓]
-* Negate [✓]
-* Normalize [✓]
-* Rotate [✓]
-* Scale [✓]
-* Scale and crop [✓]
-* Sharpen [✓]
+### Blur
+
+Blurs the image.
+
+Action name: `blur`.
+
+Configuration:
+* blur: A value between 0.3 and 1000 representing the sigma of the Gaussian mask. Defaults to `1`.
+
+### Define canvas
+
+Defines a new canvas and overlays the current image.
+
+Action name: `define_canvas`.
+
+Configuration:
+* width: The width of the canvas.
+* height: The height of the canvas.
+* channels: Number of channels. Defaults to `4`.
+* background: The background color of the canvas in hex format.
+
+### File
+
+Loads an image and overlays it on the current image.
+
+Action name: `file`.
+
+Configuration:
+* path: The path of the file.
+* gravity: Gravity at which to place the overlay. Possible values are `north`, `northeast`, `east`, `southeast`, `south`, `southwest`, `west`, `northwest`, `center` and `centre`. Defaults to `center`.
+* tile: Set to true to repeat the overlay image across the entire image with the given `gravity`. Defaults to `false`.
+* cutout: Set to true to apply only the alpha channel of the overlay image to the input image, giving the appearance of one image being cut out of another. Defaults to `false`.
+
+### Flip
+
+Flips the image on a given axis.
+
+Action name: `flip`.
+
+Configuration:
+* axis: The axis to flip on. Defaults to `y`.
+
+### Gamma
+
+Apply a gamma correction to the image.
+
+Action name: `gamma`.
+
+Configuration:
+* gamma: Value between 1.0 and 3.0. Defaults to `2.2`.
+
+### Greyscale
+
+Convert to 8-bit greyscale, 256 shades of grey.
+
+Action name: `greyscale`.
+
+### Negate
+
+Produce the "negative" of the image.
+
+Action name: `negate`.
+
+### Normalize
+
+Enhance output image contrast by stretching its luminance to cover the full dynamic range.
+
+Action name: `normalize`.
+
+### Rotate
+
+Rotates the image based on the EXIF data or at a specified angle.
+
+Action name: `rotate`.
+
+Configuration:
+* angle: Angle, multiple of 90. Defaults to `auto` which uses EXIF.
+
+### Scale
+
+Scales the image ignoring the aspect ratio.
+
+Action name: `scale`.
+
+Configuration:
+* width: The width of the new image. Can be a number or a percent value.
+* height: The height of the new image. Can be a number or a percent value.
+
+### Scale and crop
+
+Scales and crops the image mantaining the aspect ratio.
+
+Action name: `scale_and_crop`.
+
+Configuration:
+* width: The width of the new image. Can be a number or a percent value.
+* height: The height of the new image. Can be a number or a percent value.
+* gravity: Where to crop from. Possible values are `north`, `northeast`, `east`, `southeast`, `south`, `southwest`, `west`, `northwest`, `center` and `centre`. Defaults to `center`.
+
+### Sharpen
+
+Sharpen the image.
+
+Action name: `sharpen`.
+
+Configuration:
+* sigma: The sigma of the Gaussian mask. Defaults to `1`.
+* flat: The level of sharpening to apply to "flat" areas. Defaults to `1.0`.
+* jagged: The level of sharpening to apply to "jagged" areas. Defaults to `2.0`.
+
