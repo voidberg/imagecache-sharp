@@ -37,12 +37,20 @@
     "url": "https://github.com/voidberg/imagecache-sharp/issues"
   },
   "readmeFilename": "README.md",
+  "release": {
+    "generateNotes": "./node_modules/@semantic-release/release-notes-generator",
+    "verifyConditions": [
+      "./node_modules/@semantic-release/condition-codeship"
+    ]
+  },
   "dependencies": {
     "async": "^2.4.1",
     "sharp": "^0.18.1",
     "string": "^3.3.3"
   },
   "devDependencies": {
+    "@semantic-release/condition-codeship": "^1.1.0",
+    "@semantic-release/release-notes-generator": "^2.0.0",
     "assert": "^1.4.1",
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.5.2",
