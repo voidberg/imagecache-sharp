@@ -1,52 +1,44 @@
-[![Stories in Ready](https://badge.waffle.io/voidberg/imagecache-sharp.png?label=ready&title=Ready)](https://waffle.io/voidberg/imagecache-sharp)
-[![Latest release on NPM](https://img.shields.io/npm/v/imagecache-sharp.svg)](https://www.npmjs.com/package/imagecache-sharp)
-[![Travis CI](https://travis-ci.org/voidberg/imagecache-sharp.svg?branch=master)](https://travis-ci.org/voidberg/imagecache-sharp)
+[ ![Codeship Status for voidberg/imagecache-sharp](https://app.codeship.com/projects/2adcc0e0-31b3-0135-88a3-36beedd22907/status?branch=master)](https://app.codeship.com/projects/225818)[![Latest release on NPM](https://img.shields.io/npm/v/imagecache-sharp.svg)](https://www.npmjs.com/package/imagecache-sharp)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![David-dm.org](https://david-dm.org/voidberg/imagecache.svg)](https://david-dm.org/voidberg/imagecache-sharp#info=dependencies&view=table)
-[![David-dm.org](https://david-dm.org/voidberg/imagecache/dev-status.svg)](https://david-dm.org/voidberg/imagecache-sharp#info=devDependencies&view=table)
-[![MIT License](https://img.shields.io/npm/l/imagecache-sharp.svg)](https://opensource.org/licenses/Apache-2.0)
-
-#Imagecache
----
+[![David-dm.org](https://david-dm.org/voidberg/imagecache-sharp.svg)](https://david-dm.org/voidberg/imagecache-sharp#info=dependencies&view=table)
+[![David-dm.org](https://david-dm.org/voidberg/imagecache-sharp/dev-status.svg)](https://david-dm.org/voidberg/imagecache-sharp#info=devDependencies&view=table)
+[![Apache 2.0 License](https://img.shields.io/npm/l/imagecache-sharp.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## What is it?
 
-Node image generation module based on CamanJS and inspired by Drupal's image styles.
+Node image generation module based on [sharp](https://github.com/lovell/sharp) and inspired by Drupal's image styles.
 
 ## Installation
 
-### Linux prerequisites
-* `aptitude install libcairo-dev libgif-dev libjpeg-dev`
-
-### Mac OS X prerequisites
-
-It's quite painful, be warned.
-
-* Install X Server (http://xquartz.macosforge.org/trac/wiki/X112.7.6).
-* Install X Code (https://itunes.apple.com/gb/app/xcode/id497799835?mt=12) and command line tools.
-* Install Homebrew (https://github.com/Homebrew/homebrew/wiki/Installation).
-* `export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig`.
-* Install Cairo from source: `brew install --build-from-source cairo`.
+* `npm install imagecache-sharp`
 
 ## Usage
 
 ```
-var presets = require('./presets.js');
-var ImageCache = require('imagecache');
+import presets from './presets';
+import ImageCache from 'imagecache';
 
-var imagecache = new ImageCache(presets);
+const imagecache = new ImageCache(presets);
 
-imagecache.render('./in.png', 'preset_one', function (err, image) {
+imagecache.render('./in.png', 'preset_one', (err, sharpInstance) => {
+	if (err) {
+		throw err;
+	}
+
   // Save the image
-  image.save('out_s_crop_teaser.png');
-
-  // or
+  sharpInstance.toFile('out.png', (err, info) => {
+	  // ...
+  });
 
   // Get a buffer, stream it etc
-  image.canvas.toBuffer();
+  sharpInstance.toBuffer((err, data, info) => {
+	  // ...
+  });
 })
 ```
+
+The render callback returns a `sharp` instance which can be used in various ways for outputting the final image. For a list of options see [sharp's documentation](http://sharp.dimens.io/en/stable/api-output/).
 
 ## Presets structure
 
@@ -66,12 +58,10 @@ imagecache.render('./in.png', 'preset_one', function (err, image) {
         action: 'define_canvas',
         config: {
           color: '#333333',
-          exact: {
-            width: 400,
-            height: 400,
-            xpos: 'center',
-            ypos: 'center'
-          }
+	        width: 400,
+	        height: 400,
+	        xpos: 'center',
+	        ypos: 'center'
         }
       }
     ]
@@ -91,62 +81,17 @@ imagecache.render('./in.png', 'preset_one', function (err, image) {
 }
 ```
 
-### Creating plugins
-Breeze is used for plugin management. There are two types of plugins available:
+## Imagecache actions:
 
-* Utility plugins that add functions to be used by other plugins. For example see `plugins/_converters.js` that adds utility functions for parsing parameters that are used by all other plugins.
-* Action plugins that expose one or more functions that implement actions.
-
-For example, a plugin that implements the sharpen action will attach a sharpen function to the plugin registry. The function signature is `image, config, callback` where `image` is the `CamanJS` object, `config` is the action configuration from the preset and `callback` is the function that triggers the completion of the action.
-
-```
-var self = module.exports = {
-  attach: function (options) {
-    this.sharpen = function (image, config, callback) {
-      var value = this.convertInt(config.value);
-
-      if (value > 100) {
-        value = 100;
-      }
-      if (value < 0) {
-        value = 0;
-      }
-
-      image.sharpen(value);
-      callback();
-    };
-  }
-};
-```
-
-##Imagecache actions:
-
-
-* Brightness [✓]
-* Crop [✓]
+* Blur [✓]
 * Define canvas [✓]
-* Desaturate [✓]
-* Negative image [✓]
-* Resize [✓]
+* File [✓]
+* Flip [✓]
+* Gamma [✓]
+* Greyscale [✓]
+* Negate [✓]
+* Normalize [✓]
+* Rotate [✓]
 * Scale [✓]
 * Scale and crop [✓]
 * Sharpen [✓]
-* Contrast [✓]
-* Clip [✓]
-* Colorize [✓]
-* Exposure [✓]
-* Gamma [✓]
-* Hue [✓]
-* Noise [✓]
-* Saturation [✓]
-* Sepia [✓]
-* Vibrance [✓]
-* Curves [✓]
-* Overlay (watermark) [✓]
-* CamanJS filters (vintage, lomo, clarity, sinCity, sunrise, crossProcess, orangePeel, love, grungy, jarques, pinhole, oldBoot, glowingSun, hazyDays, herMajesty, nostalgia, hemingway, concentrate) [✓]
-
-Legend:
-
-* [✓] - Implemented
-* [✗] - Will not be implemented
-* [] - Not implemented yet
