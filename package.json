@@ -16,6 +16,8 @@
   },
   "main": "dist/index.js",
   "scripts": {
+    "precommit": "npm test",
+    "prepush": "npm test",
     "prebuild": "rm -rf dist && mkdir dist && mkdir dist/plugins",
     "build": "babel src -d dist",
     "watch": "babel -w src -d dist",
@@ -60,6 +62,7 @@
     "eslint": "3.19.0",
     "eslint-config-airbnb-base": "11.2.0",
     "eslint-plugin-import": "2.3.0",
+    "husky": "^0.13.4",
     "mocha": "^3.4.2",
     "nyc": "^11.0.2",
     "semantic-release": "^6.3.6"
