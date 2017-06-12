@@ -1,12 +1,12 @@
-[![Stories in Ready](https://badge.waffle.io/voidberg/imagecache.png?label=ready&title=Ready)](https://waffle.io/voidberg/imagecache)
-[![Latest release on NPM](https://img.shields.io/npm/v/imagecache.svg)](https://www.npmjs.com/package/imagecache)
+[![Stories in Ready](https://badge.waffle.io/voidberg/imagecache.png?label=ready&title=Ready)](https://waffle.io/voidberg/imagecache-sharp)
+[![Latest release on NPM](https://img.shields.io/npm/v/imagecache.svg)](https://www.npmjs.com/package/imagecache-sharp)
 [![Codeship Status for voidberg/imagecache](https://img.shields.io/codeship/0de31e00-4b12-0133-f672-7236a2d50232.svg)](https://codeship.com/projects/106113)
-[![codecov.io](http://codecov.io/github/voidberg/imagecache/coverage.svg?branch=master)](http://codecov.io/github/voidberg/imagecache?branch=master)
+[![Travis CI](https://travis-ci.org/voidberg/imagecache-sharp.svg?branch=master)](https://travis-ci.org/voidberg/imagecache-sharp)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![David-dm.org](https://david-dm.org/voidberg/imagecache.svg)](https://david-dm.org/voidberg/imagecache#info=dependencies&view=table)
-[![David-dm.org](https://david-dm.org/voidberg/imagecache/dev-status.svg)](https://david-dm.org/voidberg/imagecache#info=devDependencies&view=table)
-[![MIT License](https://img.shields.io/npm/l/imagecache.svg)](https://opensource.org/licenses/MIT)
+[![David-dm.org](https://david-dm.org/voidberg/imagecache.svg)](https://david-dm.org/voidberg/imagecache-sharp#info=dependencies&view=table)
+[![David-dm.org](https://david-dm.org/voidberg/imagecache/dev-status.svg)](https://david-dm.org/voidberg/imagecache-sharp#info=devDependencies&view=table)
+[![MIT License](https://img.shields.io/npm/l/imagecache-sharp.svg)](https://opensource.org/licenses/Apache-2.0)
 
 #Imagecache
 ---
