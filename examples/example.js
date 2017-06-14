@@ -3,26 +3,6 @@ import ImageCache from '../dist/index';
 
 const imagecache = new ImageCache(presets);
 
-imagecache.render('./in.png', 'test_sc', (err, image) => {
-  if (err) {
-    console.log('Failed to process image out_s_test_sc.png.');
-    console.log(err);
-
-    return;
-  }
-
-  image.toFile('out_s_test_sc.png', (saveErr, info) => {
-    if (saveErr) {
-      console.log('Failed to save image out_s_test_sc.png.');
-      console.log(err);
-
-      return;
-    }
-
-    console.log(`Saved image out_s_test_sc.png with width ${info.width} and height ${info.height}.`);
-  });
-});
-
 imagecache.render('./in.png', 's_crop_tiny', (err, image) => {
   if (err) {
     console.log('Failed to process image out_s_crop_tiny.png.');

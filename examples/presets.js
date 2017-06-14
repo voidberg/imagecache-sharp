@@ -1,27 +1,4 @@
 module.exports = {
-  test_sc: {
-    presetname: 'test_sc',
-    actions: [
-      {
-        action: 'scale_and_crop',
-        config: {
-          width: 152,
-          height: 152,
-        },
-      },
-      {
-        action: 'define_canvas',
-        config: {
-          color: '#333333',
-          width: 400,
-          height: 400,
-        },
-      },
-      {
-        action: 'blur',
-      },
-    ],
-  },
   s_crop_tiny: {
     presetname: 's_crop_tiny',
     actions: [
