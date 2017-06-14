@@ -23,8 +23,10 @@ module.exports = {
       return converted;
     };
 
-    app.actions.convertPosition = (value, maxPosition, imageSize = 0) => {
+    app.actions.convertPosition = (value, maxPosition, imageSize) => {
       let converted;
+
+      imageSize = imageSize || 0;
 
       if (value === 'left' || value === 'top') {
         converted = 0;

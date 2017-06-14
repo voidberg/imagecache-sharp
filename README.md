@@ -17,7 +17,7 @@ Node image generation module based on [sharp](https://github.com/lovell/sharp) a
 
 ```
 import presets from './presets';
-import ImageCache from 'imagecache';
+import ImageCache from 'imagecache-sharp';
 
 const imagecache = new ImageCache(presets);
 
