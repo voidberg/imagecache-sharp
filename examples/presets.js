@@ -1,6 +1,29 @@
 module.exports = {
-  s_crop_tiny: {
-    presetname: 's_crop_tiny',
+  canvas_scale_with_blur: {
+    presetname: 'canvas_scale_with_blur',
+    actions: [
+      {
+        action: 'scale_and_crop',
+        config: {
+          width: 152,
+          height: 152,
+        },
+      },
+      {
+        action: 'define_canvas',
+        config: {
+          color: '#333333',
+          width: 400,
+          height: 400,
+        },
+      },
+      {
+        action: 'blur',
+      },
+    ],
+  },
+  scale_crop_tiny: {
+    presetname: 'scale_crop_tiny',
     actions: [
       {
         action: 'scale_and_crop',
@@ -11,8 +34,8 @@ module.exports = {
       },
     ],
   },
-  s_crop_small: {
-    presetname: 's_crop_small',
+  scale_crop_small: {
+    presetname: 'scale_crop_small',
     actions: [
       {
         action: 'scale_and_crop',
@@ -23,8 +46,8 @@ module.exports = {
       },
     ],
   },
-  s_crop_teaser: {
-    presetname: 's_crop_teaser',
+  scale_crop_teaser: {
+    presetname: 'scale_crop_teaser',
     actions: [
       {
         action: 'scale_and_crop',
@@ -35,8 +58,8 @@ module.exports = {
       },
     ],
   },
-  s_scale_teaser: {
-    presetname: 's_scale_teaser',
+  scale_with_watermark: {
+    presetname: 'scale_with_watermark',
     actions: [
       {
         action: 'file',
