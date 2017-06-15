@@ -32,9 +32,9 @@ module.exports = {
       }
 
       if (width === 0) {
-        width = height * ratio;
+        width = Math.round(height * ratio);
       } else if (height === 0) {
-        height = width / ratio;
+        height = Math.round(width / ratio);
       }
 
 

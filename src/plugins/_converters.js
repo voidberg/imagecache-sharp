@@ -18,7 +18,7 @@ module.exports = {
         converted = S(value).toInt();
       }
 
-      return converted;
+      return Math.round(converted);
     };
 
     app.actions.convertPosition = (value, maxPosition, imageSize) => {
@@ -36,7 +36,7 @@ module.exports = {
         converted = app.actions.convertDimension(value, maxPosition);
       }
 
-      return converted;
+      return Math.round(converted);
     };
   },
 };
