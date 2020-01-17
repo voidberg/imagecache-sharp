@@ -13,7 +13,7 @@ module.exports = {
 
       const upscale = config.upscale ? app.actions.convertBool(config.upscale) : true;
 
-      if (!width && !height && (!maxWidth && !maxHeight)) {
+      if (!width && !height && !maxWidth && !maxHeight) {
         return callback(undefined, image);
       }
 
@@ -37,8 +37,7 @@ module.exports = {
         height = Math.round(width / ratio);
       }
 
-
-      return callback(undefined, image.resize(width, height).ignoreAspectRatio());
+      return callback(undefined, image.resize(width, height, { canvas: 'ignoreAspectRatio' }));
     };
   },
 };

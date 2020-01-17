@@ -108,7 +108,7 @@ describe('ImageCache', () => {
     imagecache.render('foo.png', 's_crop_small', (err) => {
       assert(err);
       assert(err instanceof Error);
-      assert.equal(err.message, 'Input file is missing or of an unsupported image format');
+      assert.equal(err.message, 'Input file is missing');
 
       done();
     });

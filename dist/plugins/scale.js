@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 module.exports = {
   attach: function attach(app) {
@@ -39,7 +39,7 @@ module.exports = {
         height = Math.round(width / ratio);
       }
 
-      return callback(undefined, image.resize(width, height).ignoreAspectRatio());
+      return callback(undefined, image.resize(width, height, { canvas: 'ignoreAspectRatio' }));
     };
   }
 };

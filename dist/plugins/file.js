@@ -10,8 +10,9 @@ module.exports = {
         tile: config.tile || false,
         cutout: config.cutout || false
       };
-
-      return callback(undefined, image.overlayWith(filepath, options));
+      return callback(undefined, image.composite([{
+        input: filepath
+      }], options));
     };
   }
 };

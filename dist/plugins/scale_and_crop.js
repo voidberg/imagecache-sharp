@@ -7,7 +7,7 @@ module.exports = {
       const height = config.height ? app.actions.convertDimension(config.height, metadata.height) : metadata.height;
       const gravity = config.gravity || 'center';
 
-      return callback(undefined, image.resize(width, height).crop(gravity));
+      return callback(undefined, image.resize(width, height, { fit: 'cover', position: gravity }));
     };
   }
 };
