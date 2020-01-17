@@ -9,22 +9,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 module.exports = {
   attach: function attach(app) {
     app.actions.define_canvas = (image, metadata, config, callback) => {
-      const canvas = (0, _sharp2.default)(null, {
-        create: {
-          width: config.width,
-          height: config.height,
-          channels: config.channels || 4,
-          background: config.color || '#ffffff00'
-        }
-      });
-
       const options = {
         gravity: config.gravity,
         tile: config.tile || false,
         cutout: config.cutout || false
       };
 
-      return image.toBuffer().then(buffer => callback(undefined, canvas.overlayWith(buffer, options)));
+      return callback(undefined, image.composite([{
+        input: {
+          create: {
+            width: config.width,
+            height: config.height,
+            channels: config.channels || 4,
+            background: config.color || '#ffffff00'
+          }
+        }
+      }], options));
     };
   }
 };
