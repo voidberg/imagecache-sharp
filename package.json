@@ -59,7 +59,7 @@
     "babel-register": "^6.24.1",
     "codecov.io": "^0.1.6",
     "commitizen": "1.0.5",
-    "eslint": "3.19.0",
+    "eslint": "4.18.2",
     "eslint-config-airbnb-base": "11.2.0",
     "eslint-plugin-import": "2.3.0",
     "husky": "^0.13.4",
