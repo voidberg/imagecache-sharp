@@ -4620,8 +4620,8 @@ normalize-path@^2.0.1:
     remove-trailing-separator "^1.0.1"
 
 normalize-url@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-6.0.0.tgz#688ba4251cc46350f5adf4e65e14b7113a752684"
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-6.0.1.tgz#a4f27f58cf8c7b287b440b8a8201f42d0b00d256"
 
 npm-audit-report@^2.1.4:
   version "2.1.4"
