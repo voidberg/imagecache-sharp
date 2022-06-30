@@ -1,13 +1,24 @@
-'use strict';
-
-module.exports = {
-  attach: function attach(app) {
-    app.actions.scale_and_crop = (image, metadata, config, callback) => {
-      const width = config.width ? app.actions.convertDimension(config.width, metadata.width) : metadata.width;
-      const height = config.height ? app.actions.convertDimension(config.height, metadata.height) : metadata.height;
-      const gravity = config.gravity || 'center';
-
-      return callback(undefined, image.resize(width, height, { fit: 'cover', position: gravity }));
-    };
-  }
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var PluginScaleCrop = {
+    name: 'Scale and crop',
+    description: '',
+    actions: {
+        scale_and_crop: function (instance, image, metadata, config) {
+            var convertDimension = instance.getAction('convertDimension');
+            var width = config.width ? convertDimension(instance, config.width, metadata.width) : metadata.width;
+            var height = config.height ? convertDimension(instance, config.height, metadata.height) : metadata.height;
+            var gravity = config.gravity || 'center';
+            return new Promise(function (resolve, reject) {
+                try {
+                    resolve(image.resize(width, height, { fit: 'cover', position: gravity }));
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
+        },
+    },
 };
+exports.default = PluginScaleCrop;
+//# sourceMappingURL=scale_and_crop.js.map

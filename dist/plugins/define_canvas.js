@@ -1,30 +1,38 @@
-'use strict';
-
-var _sharp = require('sharp');
-
-var _sharp2 = _interopRequireDefault(_sharp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = {
-  attach: function attach(app) {
-    app.actions.define_canvas = (image, metadata, config, callback) => {
-      const options = {
-        gravity: config.gravity,
-        tile: config.tile || false,
-        cutout: config.cutout || false
-      };
-
-      return callback(undefined, image.composite([{
-        input: {
-          create: {
-            width: config.width,
-            height: config.height,
-            channels: config.channels || 4,
-            background: config.color || '#ffffff00'
-          }
-        }
-      }], options));
-    };
-  }
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+var sharp_1 = __importDefault(require("sharp"));
+var PluginDefineCanvas = {
+    name: 'Define canvas',
+    description: 'This plugin creates a resized canvas.',
+    actions: {
+        define_canvas: function (instance, image, metadata, config) {
+            return new Promise(function (resolve, reject) {
+                try {
+                    image.composite([{
+                            input: {
+                                create: {
+                                    width: config.width,
+                                    height: config.height,
+                                    channels: config.channels || 4,
+                                    background: config.color || '#ffffff00',
+                                },
+                            },
+                            gravity: config.gravity,
+                            tile: config.tile || false,
+                        }])
+                        .png()
+                        .toBuffer()
+                        .then(function (data) { return resolve(sharp_1.default(data)); });
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
+        },
+    },
+};
+exports.default = PluginDefineCanvas;
+//# sourceMappingURL=define_canvas.js.map

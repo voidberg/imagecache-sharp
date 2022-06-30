@@ -1,0 +1,1 @@
+{"version":3,"file":"normalize.js","sourceRoot":"","sources":["../../src/plugins/normalize.ts"],"names":[],"mappings":";;AAGA,IAAM,eAAe,GAAW;IAC9B,IAAI,EAAE,WAAW;IACjB,WAAW,EAAE,EAAE;IACf,OAAO,EAAE;QACP,SAAS,EAAE,UAAC,KAAkB;YAC5B,OAAO,KAAK,CAAC,SAAS,EAAE,CAAC;QAC3B,CAAC;KACF;CACF,CAAC;AAEF,kBAAe,eAAe,CAAC"}

@@ -1,11 +1,14 @@
 "use strict";
-
-module.exports = {
-  attach: function attach(app) {
-    app.actions.gamma = (image, metadata, config, callback) => {
-      const gamma = config.gamma || 2.2;
-
-      return callback(undefined, image.gamma(gamma));
-    };
-  }
+Object.defineProperty(exports, "__esModule", { value: true });
+var PluginGamma = {
+    name: 'Gamma',
+    description: '',
+    actions: {
+        gamma: function (instance, image, metadata, config) {
+            var gamma = config.gamma || 2.2;
+            return image.gamma(gamma);
+        },
+    },
 };
+exports.default = PluginGamma;
+//# sourceMappingURL=gamma.js.map

@@ -1,11 +1,14 @@
 "use strict";
-
-module.exports = {
-  attach: function attach(app) {
-    app.actions.rotate = (image, metadata, config, callback) => {
-      const angle = config.angle || 90;
-
-      return callback(undefined, image.rotate(angle));
-    };
-  }
+Object.defineProperty(exports, "__esModule", { value: true });
+var PluginRotate = {
+    name: 'Rotate',
+    description: '',
+    actions: {
+        rotate: function (instance, image, metadata, config) {
+            var angle = config.angle || 90;
+            return image.rotate(angle);
+        },
+    },
 };
+exports.default = PluginRotate;
+//# sourceMappingURL=rotate.js.map

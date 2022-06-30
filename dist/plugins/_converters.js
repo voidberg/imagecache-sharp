@@ -1,44 +1,41 @@
-'use strict';
-
-/* eslint no-bitwise: ["error", { "allow": ["~"] }] */
-const S = require('string');
-
-module.exports = {
-  attach: function attach(app) {
-    app.actions.convertBoolean = value => S(value).toBool();
-
-    app.actions.convertFloat = value => S(value).toFloat();
-
-    app.actions.convertInt = value => S(value).toInt();
-
-    app.actions.convertDimension = (value, maxDimension) => {
-      let converted;
-
-      if (S(value).endsWith('%')) {
-        converted = ~~(maxDimension * S(value).replace('%', '').toInt() / 100);
-      } else {
-        converted = S(value).toInt();
-      }
-
-      return Math.round(converted);
-    };
-
-    app.actions.convertPosition = (value, maxPosition, imageSize) => {
-      let converted;
-
-      imageSize = imageSize || 0;
-
-      if (value === 'left' || value === 'top') {
-        converted = 0;
-      } else if (value === 'center') {
-        converted = ~~(maxPosition / 2) - ~~(imageSize / 2);
-      } else if (value === 'right' || value === 'bottom') {
-        converted = maxPosition;
-      } else {
-        converted = app.actions.convertDimension(value, maxPosition);
-      }
-
-      return Math.round(converted);
-    };
-  }
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+var string_1 = __importDefault(require("string"));
+var PluginConverter = {
+    name: 'Converter functions',
+    description: 'This plugin offers various helper functions for converting option strings to booleans, floats, numbers and dimensions.',
+    actions: {
+        convertDimension: function (instance, value, maxDimension) {
+            var converted;
+            if (string_1.default(value).endsWith('%')) {
+                converted = ~~((maxDimension * string_1.default(value).replaceAll('%', '').toInt()) / 100);
+            }
+            else {
+                converted = string_1.default(value).toInt();
+            }
+            return Math.round(converted);
+        },
+        convertPosition: function (instance, value, maxPosition, imageSize) {
+            var converted;
+            imageSize = imageSize || 0;
+            if (value === 'left' || value === 'top') {
+                converted = 0;
+            }
+            else if (value === 'center') {
+                converted = ~~(maxPosition / 2) - ~~(imageSize / 2);
+            }
+            else if (value === 'right' || value === 'bottom') {
+                converted = maxPosition;
+            }
+            else {
+                converted = instance.getAction('convertDimension')(instance, value, maxPosition);
+            }
+            return Math.round(converted);
+        },
+    },
+};
+exports.default = PluginConverter;
+//# sourceMappingURL=_converters.js.map
