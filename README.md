@@ -1,8 +1,6 @@
-[ ![Codeship Status for voidberg/imagecache-sharp](https://app.codeship.com/projects/2adcc0e0-31b3-0135-88a3-36beedd22907/status?branch=master)](https://app.codeship.com/projects/225818)[![Latest release on NPM](https://img.shields.io/npm/v/imagecache-sharp.svg)](https://www.npmjs.com/package/imagecache-sharp)
+[![Latest release on NPM](https://img.shields.io/npm/v/imagecache-sharp.svg)](https://www.npmjs.com/package/imagecache-sharp)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![David-dm.org](https://david-dm.org/voidberg/imagecache-sharp.svg)](https://david-dm.org/voidberg/imagecache-sharp#info=dependencies&view=table)
-[![David-dm.org](https://david-dm.org/voidberg/imagecache-sharp/dev-status.svg)](https://david-dm.org/voidberg/imagecache-sharp#info=devDependencies&view=table)
 [![Apache 2.0 License](https://img.shields.io/npm/l/imagecache-sharp.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## What is it?
