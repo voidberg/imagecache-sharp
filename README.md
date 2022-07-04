@@ -7,6 +7,8 @@
 
 Node image generation module based on [sharp](https://github.com/lovell/sharp) and inspired by Drupal's image styles.
 
+**NOTE:** This is a beta of the 2.0 version, a full rewrite using TypeScript and the latest version of Sharp.
+
 ## Installation
 
 - `npm install imagecache-sharp`
