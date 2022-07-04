@@ -17,7 +17,7 @@ Node image generation module based on [sharp](https://github.com/lovell/sharp) a
 
 ## Usage
 
-```
+```typescript
 import { ImageCache, Image } from "../src/imagecache";
 import presets from "./presets";
 
@@ -41,7 +41,7 @@ The render function returns a `sharp.Sharp` instance (`Image` is just an alias f
 
 A preset is defined like this:
 
-```
+```typescript
 type Preset = {
   presetName: string;
   actions: Action[];
@@ -50,7 +50,7 @@ type Preset = {
 
 An action contains an operation (which is defined by the plugins) and an optional config.
 
-```
+```typescript
 type Action = {
   action: string;
   config?: any;
@@ -59,43 +59,43 @@ type Action = {
 
 Here are two example presets. The first one resizes and crops the image, puts it on a bigger canvas, then blurs it. The second one resizes and crops the image.
 
-```
+```typescript
 export default [
   {
-    presetName: "canvas_scale_with_blur",
+    presetName: 'canvas_scale_with_blur',
     actions: [
       {
-       action: "scale_and_crop",
-       config: {
+        action: 'scale_and_crop',
+        config: {
           width: 152,
           height: 152,
         },
       },
       {
-        action: "define_canvas",
+        action: 'define_canvas',
         config: {
-          color: "#333333",
+          color: '#333333',
           width: 400,
           height: 400,
         },
       },
       {
-        action: "blur",
+        action: 'blur',
       },
     ],
   },
   {
-    presetName: "scale_crop_tiny",
+    presetName: 'scale_crop_tiny',
     actions: [
       {
-        action: "scale_and_crop",
+        action: 'scale_and_crop',
         config: {
           width: 32,
           height: 32,
         },
       },
     ],
-  }
+  },
 ];
 ```
 
