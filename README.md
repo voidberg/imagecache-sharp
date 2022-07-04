@@ -13,6 +13,10 @@ Node image generation module based on [sharp](https://github.com/lovell/sharp) a
 
 * `npm install imagecache-sharp`
 
+**Note:** please use the beta version that adds TypeScript support and works with the latest version of Sharp:
+
+* `npm install imagecache-sharp@beta`
+
 ## Usage
 
 ```
