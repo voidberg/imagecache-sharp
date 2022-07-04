@@ -5,7 +5,12 @@ const PluginFlip: Plugin = {
   name: 'Flip and flop',
   description: '',
   actions: {
-    flip: (instance: ImageCache, image: sharp.Sharp, metadata: object, config: { axis: string }): sharp.Sharp => {
+    flip: (
+      instance: ImageCache,
+      image: sharp.Sharp,
+      metadata: object,
+      config: { axis: string }
+    ): sharp.Sharp => {
       const axis = config.axis || 'y';
 
       if (axis === 'y') {

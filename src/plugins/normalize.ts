@@ -5,8 +5,17 @@ const PluginNormalize: Plugin = {
   name: 'Normalize',
   description: '',
   actions: {
-    normalize: (image: sharp.Sharp): sharp.Sharp => {
-      return image.normalize();
+    normalize: (
+      instance: ImageCache,
+      image: sharp.Sharp
+    ): Promise<sharp.Sharp> => {
+      return new Promise<sharp.Sharp>((resolve, reject) => {
+        try {
+          resolve(image.normalize());
+        } catch (e) {
+          reject(e);
+        }
+      });
     },
   },
 };

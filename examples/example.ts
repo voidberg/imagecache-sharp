@@ -1,32 +1,35 @@
-import { ImageCache } from "../src/imagecache";
-import presets from "./presets";
+import { ImageCache, Image } from '../src/imagecache';
+import presets from './presets';
 
-const imagecache = new ImageCache(presets);
+const imagecache: ImageCache = new ImageCache(presets);
 
 const example_scale_with_blur = async () => {
   try {
-    const image = await imagecache.render("./in.png", "canvas_scale_with_blur");
-    await image.toFile("out_canvas_scale_with_blur.png");
-    console.log("Finished.");
+    const image: Image = await imagecache.render(
+      './innn.png',
+      'canvas_scale_with_blur'
+    );
+    await image.toFile('out_canvas_scale_with_blur.png');
+    console.log('Finished.');
   } catch (e) {
-    console.log("Caught error");
+    console.log('Caught error');
     console.log(e);
   }
 };
 
 const example_scale_with_watermark = async () => {
   try {
-    const image = await imagecache.render("./in.png", "scale_with_watermark");
-    await image.toFile("out_scale_with_watermark.png");
-    console.log("Finished.");
+    const image = await imagecache.render('./in.png', 'scale_with_watermark');
+    await image.toFile('out_scale_with_watermark.png');
+    console.log('Finished.');
   } catch (e) {
-    console.log("Caught error");
+    console.log('Caught error');
     console.log(e);
   }
 };
 
 example_scale_with_blur();
-example_scale_with_watermark();
+// example_scale_with_watermark();
 
 // imagecache.render('./in.png', 'canvas_scale_with_blur')
 //   .then(image => {

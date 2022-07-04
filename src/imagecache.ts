@@ -1,5 +1,6 @@
-import sharp from "sharp";
-import _plugins from "./plugins/index";
+import fs from 'fs';
+import sharp from 'sharp';
+import _plugins from './plugins/index';
 
 export type ActionsHash = {
   [name: string]: Function;
@@ -20,6 +21,8 @@ export type Preset = {
   presetName: string;
   actions: Action[];
 };
+
+export type Image = sharp.Sharp;
 
 export class ImageCache {
   private presets: Preset[];
@@ -94,16 +97,20 @@ export class ImageCache {
    * @param image The image to be rendered
    * @param presetName The preset to use
    */
-  async render(image: string, presetName: string): Promise<sharp.Sharp> {
-    let sharpInstance: sharp.Sharp;
+  async render(image: string, presetName: string): Promise<Image> {
+    let sharpInstance: Image;
     let metadata: Object;
 
-    return new Promise<sharp.Sharp>(async (resolve, reject): Promise<void> => {
+    return new Promise<Image>(async (resolve, reject): Promise<void> => {
       const preset = this.presets.find(
         (preset) => preset.presetName === presetName
       );
       if (!preset) {
         return reject(new Error(`Preset ${presetName} could not be found.`));
+      }
+
+      if (!fs.existsSync(image)) {
+        return reject(new Error(`File ${image} does not exist.`));
       }
 
       try {

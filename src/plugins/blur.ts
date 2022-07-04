@@ -1,9 +1,9 @@
-import sharp from "sharp";
-import { ImageCache, Plugin } from "../imagecache";
+import sharp from 'sharp';
+import { ImageCache, Plugin } from '../imagecache';
 
 const PluginBlur: Plugin = {
-  name: "Blur",
-  description: "This plugin implements the blur functionality.",
+  name: 'Blur',
+  description: 'This plugin implements the blur functionality.',
   actions: {
     blur: (
       instance: ImageCache,

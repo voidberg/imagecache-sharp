@@ -5,10 +5,19 @@ const PluginNegate: Plugin = {
   name: 'Negate',
   description: '',
   actions: {
-    negate: (image: sharp.Sharp): sharp.Sharp => {
-      return image.negate();
+    negate: (
+      instance: ImageCache,
+      image: sharp.Sharp
+    ): Promise<sharp.Sharp> => {
+      return new Promise<sharp.Sharp>((resolve, reject) => {
+        try {
+          resolve(image.negate());
+        } catch (e) {
+          reject(e);
+        }
+      });
     },
   },
 };
 
-export default PluginNegate; 
+export default PluginNegate;
