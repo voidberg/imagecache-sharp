@@ -42,17 +42,13 @@
   },
   "readmeFilename": "README.md",
   "release": {
-    "generateNotes": "./node_modules/@semantic-release/release-notes-generator",
-    "verifyConditions": [
-      "./node_modules/@semantic-release/condition-codeship"
-    ]
+    "generateNotes": "./node_modules/@semantic-release/release-notes-generator"
   },
   "dependencies": {
     "sharp": "0.24.0",
     "string": "3.3.3"
   },
   "devDependencies": {
-    "@semantic-release/condition-codeship": "^1.1.0",
     "@semantic-release/release-notes-generator": "^2.0.0",
     "@types/jest": "^26.0.23",
     "@types/jest-image-snapshot": "^4.3.0",
