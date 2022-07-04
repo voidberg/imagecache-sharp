@@ -5,7 +5,7 @@ name: Release
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "main", "next", "next-major", "beta", "alpha" ]
 
 jobs:
   release:
