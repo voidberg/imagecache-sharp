@@ -12,23 +12,28 @@ const PluginScale: Plugin = {
       config
     ): Promise<sharp.Sharp> => {
       const convertDimension = instance.getAction('convertDimension');
-      const convertBool = instance.getAction('convertBool');
 
       const iWidth = metadata.width;
       const iHeight = metadata.height;
       const ratio = iWidth / iHeight;
 
       const maxWidth = config.maxWidth
-        ? convertDimension(config.maxWidth, iWidth)
+        ? convertDimension(instance, config.maxWidth, iWidth)
         : 0;
       const maxHeight = config.maxHeight
-        ? convertDimension(config.maxHeight, iHeight)
+        ? convertDimension(instance, config.maxHeight, iHeight)
         : 0;
 
-      let width = config.width ? convertDimension(config.width, iWidth) : 0;
-      let height = config.height ? convertDimension(config.height, iHeight) : 0;
+      let width = config.width
+        ? convertDimension(instance, config.width, iWidth)
+        : 0;
+      let height = config.height
+        ? convertDimension(instance, config.height, iHeight)
+        : 0;
 
-      const upscale = config.upscale ? convertBool(config.upscale) : true;
+      const upscale = Object.prototype.hasOwnProperty.call(config, 'upscale')
+        ? config.upscale
+        : true;
 
       return new Promise<sharp.Sharp>((resolve, reject) => {
         try {
