@@ -5,7 +5,10 @@ var PluginRotate = {
     description: '',
     actions: {
         rotate: function (instance, image, metadata, config) {
-            var angle = config.angle || 90;
+            var angle = config.angle || 'auto';
+            if (angle === 'auto') {
+                return image.rotate();
+            }
             return image.rotate(angle);
         },
     },

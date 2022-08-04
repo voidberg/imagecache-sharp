@@ -40,6 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImageCache = void 0;
+var fs_1 = __importDefault(require("fs"));
 var sharp_1 = __importDefault(require("sharp"));
 var index_1 = __importDefault(require("./plugins/index"));
 var ImageCache = /** @class */ (function () {
@@ -118,6 +119,9 @@ var ImageCache = /** @class */ (function () {
                                     preset = this.presets.find(function (preset) { return preset.presetName === presetName; });
                                     if (!preset) {
                                         return [2 /*return*/, reject(new Error("Preset " + presetName + " could not be found."))];
+                                    }
+                                    if (!fs_1.default.existsSync(image)) {
+                                        return [2 /*return*/, reject(new Error("File " + image + " does not exist."))];
                                     }
                                     try {
                                         sharpInstance = sharp_1.default(image);

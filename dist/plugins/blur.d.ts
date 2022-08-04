@@ -1,3 +1,3 @@
-import { Plugin } from "../imagecache";
+import { Plugin } from '../imagecache';
 declare const PluginBlur: Plugin;
 export default PluginBlur;

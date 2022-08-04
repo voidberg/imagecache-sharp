@@ -1,4 +1,4 @@
-import sharp from "sharp";
+import sharp from 'sharp';
 export declare type ActionsHash = {
     [name: string]: Function;
 };
@@ -15,6 +15,7 @@ export declare type Preset = {
     presetName: string;
     actions: Action[];
 };
+export declare type Image = sharp.Sharp;
 export declare class ImageCache {
     private presets;
     private actions;
@@ -61,5 +62,5 @@ export declare class ImageCache {
      * @param image The image to be rendered
      * @param presetName The preset to use
      */
-    render(image: string, presetName: string): Promise<sharp.Sharp>;
+    render(image: string, presetName: string): Promise<Image>;
 }

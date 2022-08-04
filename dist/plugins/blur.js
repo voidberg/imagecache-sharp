@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var PluginBlur = {
-    name: "Blur",
-    description: "This plugin implements the blur functionality.",
+    name: 'Blur',
+    description: 'This plugin implements the blur functionality.',
     actions: {
         blur: function (instance, image, metadata, config) {
             var sigma = config.sigma || 50;

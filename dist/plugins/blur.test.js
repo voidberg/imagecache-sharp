@@ -39,17 +39,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var jest_image_snapshot_1 = require("jest-image-snapshot");
 var imagecache_1 = require("../imagecache");
 expect.extend({ toMatchImageSnapshot: jest_image_snapshot_1.toMatchImageSnapshot });
-test("blurs image", function () { return __awaiter(void 0, void 0, void 0, function () {
+test('blurs image', function () { return __awaiter(void 0, void 0, void 0, function () {
     var imagecache, image, imageBuffer;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 imagecache = new imagecache_1.ImageCache([
                     {
-                        presetName: "blur",
+                        presetName: 'blur',
                         actions: [
                             {
-                                action: "blur",
+                                action: 'blur',
                                 config: {
                                     sigma: 5,
                                 },
@@ -57,58 +57,58 @@ test("blurs image", function () { return __awaiter(void 0, void 0, void 0, funct
                         ],
                     },
                 ]);
-                return [4 /*yield*/, imagecache.render("./examples/in.png", "blur")];
+                return [4 /*yield*/, imagecache.render('./examples/in.png', 'blur')];
             case 1:
                 image = _a.sent();
                 return [4 /*yield*/, image.toBuffer()];
             case 2:
                 imageBuffer = _a.sent();
                 expect(imageBuffer).toMatchImageSnapshot({
-                    failureThresholdType: "percent",
+                    failureThresholdType: 'percent',
                     failureThreshold: 10,
                 });
                 return [2 /*return*/];
         }
     });
 }); });
-test("blurs image without a sigma value", function () { return __awaiter(void 0, void 0, void 0, function () {
+test('blurs image without a sigma value', function () { return __awaiter(void 0, void 0, void 0, function () {
     var imagecache, image, imageBuffer;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 imagecache = new imagecache_1.ImageCache([
                     {
-                        presetName: "blur",
+                        presetName: 'blur',
                         actions: [
                             {
-                                action: "blur",
+                                action: 'blur',
                             },
                         ],
                     },
                 ]);
-                return [4 /*yield*/, imagecache.render("./examples/in.png", "blur")];
+                return [4 /*yield*/, imagecache.render('./examples/in.png', 'blur')];
             case 1:
                 image = _a.sent();
                 return [4 /*yield*/, image.toBuffer()];
             case 2:
                 imageBuffer = _a.sent();
                 expect(imageBuffer).toMatchImageSnapshot({
-                    failureThresholdType: "percent",
+                    failureThresholdType: 'percent',
                     failureThreshold: 10,
                 });
                 return [2 /*return*/];
         }
     });
 }); });
-test("fails to blurs with an invalid sigma value", function () { return __awaiter(void 0, void 0, void 0, function () {
+test('fails to blurs with an invalid sigma value', function () { return __awaiter(void 0, void 0, void 0, function () {
     var imagecache;
     return __generator(this, function (_a) {
         imagecache = new imagecache_1.ImageCache([
             {
-                presetName: "blur",
+                presetName: 'blur',
                 actions: [
                     {
-                        action: "blur",
+                        action: 'blur',
                         config: {
                             sigma: 0.1,
                         },
@@ -116,7 +116,7 @@ test("fails to blurs with an invalid sigma value", function () { return __awaite
                 ],
             },
         ]);
-        expect(imagecache.render("./examples/in.png", "blur")).rejects.toThrow("Expected number between 0.3 and 1000 for sigma but received 0.1 of type number");
+        expect(imagecache.render('./examples/in.png', 'blur')).rejects.toThrow('Expected number between 0.3 and 1000 for sigma but received 0.1 of type number');
         return [2 /*return*/];
     });
 }); });

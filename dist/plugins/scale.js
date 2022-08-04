@@ -6,15 +6,24 @@ var PluginScale = {
     actions: {
         scale: function (instance, image, metadata, config) {
             var convertDimension = instance.getAction('convertDimension');
-            var convertBool = instance.getAction('convertBool');
             var iWidth = metadata.width;
             var iHeight = metadata.height;
             var ratio = iWidth / iHeight;
-            var maxWidth = config.maxWidth ? convertDimension(config.maxWidth, iWidth) : 0;
-            var maxHeight = config.maxHeight ? convertDimension(config.maxHeight, iHeight) : 0;
-            var width = config.width ? convertDimension(config.width, iWidth) : 0;
-            var height = config.height ? convertDimension(config.height, iHeight) : 0;
-            var upscale = config.upscale ? convertBool(config.upscale) : true;
+            var maxWidth = config.maxWidth
+                ? convertDimension(instance, config.maxWidth, iWidth)
+                : 0;
+            var maxHeight = config.maxHeight
+                ? convertDimension(instance, config.maxHeight, iHeight)
+                : 0;
+            var width = config.width
+                ? convertDimension(instance, config.width, iWidth)
+                : 0;
+            var height = config.height
+                ? convertDimension(instance, config.height, iHeight)
+                : 0;
+            var upscale = Object.prototype.hasOwnProperty.call(config, 'upscale')
+                ? config.upscale
+                : true;
             return new Promise(function (resolve, reject) {
                 try {
                     if (!width && !height && !maxWidth && !maxHeight) {

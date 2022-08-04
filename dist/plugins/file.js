@@ -6,11 +6,13 @@ var PluginFile = {
     actions: {
         file: function (instance, image, metadata, config) {
             var filepath = config.path;
-            return image.composite([{
+            return image.composite([
+                {
                     input: filepath,
                     gravity: config.gravity || 'center',
                     tile: config.tile || false,
-                }]);
+                },
+            ]);
         },
     },
 };

@@ -11,7 +11,8 @@ var PluginConverter = {
         convertDimension: function (instance, value, maxDimension) {
             var converted;
             if (string_1.default(value).endsWith('%')) {
-                converted = ~~((maxDimension * string_1.default(value).replaceAll('%', '').toInt()) / 100);
+                converted = ~~((maxDimension * string_1.default(value).replaceAll('%', '').toInt()) /
+                    100);
             }
             else {
                 converted = string_1.default(value).toInt();

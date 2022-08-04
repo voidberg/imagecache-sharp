@@ -4,8 +4,15 @@ var PluginNegate = {
     name: 'Negate',
     description: '',
     actions: {
-        negate: function (image) {
-            return image.negate();
+        negate: function (instance, image) {
+            return new Promise(function (resolve, reject) {
+                try {
+                    resolve(image.negate());
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
         },
     },
 };

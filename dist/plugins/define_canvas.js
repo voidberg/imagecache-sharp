@@ -10,26 +10,25 @@ var PluginDefineCanvas = {
     actions: {
         define_canvas: function (instance, image, metadata, config) {
             return new Promise(function (resolve, reject) {
-                try {
-                    image.composite([{
-                            input: {
-                                create: {
-                                    width: config.width,
-                                    height: config.height,
-                                    channels: config.channels || 4,
-                                    background: config.color || '#ffffff00',
-                                },
+                image
+                    .composite([
+                    {
+                        input: {
+                            create: {
+                                width: config.width,
+                                height: config.height,
+                                channels: config.channels || 4,
+                                background: config.color || '#ffffff00',
                             },
-                            gravity: config.gravity,
-                            tile: config.tile || false,
-                        }])
-                        .png()
-                        .toBuffer()
-                        .then(function (data) { return resolve(sharp_1.default(data)); });
-                }
-                catch (e) {
-                    reject(e);
-                }
+                        },
+                        gravity: config.gravity,
+                        tile: config.tile || false,
+                    },
+                ])
+                    .png()
+                    .toBuffer()
+                    .then(function (data) { return resolve(sharp_1.default(data)); })
+                    .catch(function (error) { return reject(error); });
             });
         },
     },

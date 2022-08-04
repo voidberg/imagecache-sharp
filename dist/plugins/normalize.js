@@ -4,8 +4,15 @@ var PluginNormalize = {
     name: 'Normalize',
     description: '',
     actions: {
-        normalize: function (image) {
-            return image.normalize();
+        normalize: function (instance, image) {
+            return new Promise(function (resolve, reject) {
+                try {
+                    resolve(image.normalize());
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
         },
     },
 };
