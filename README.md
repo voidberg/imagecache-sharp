@@ -5,6 +5,8 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Apache 2.0 License](https://img.shields.io/npm/l/imagecache-sharp.svg)](https://opensource.org/licenses/Apache-2.0)
 
+![ImageCache Sharp](https://www.dropbox.com/s/7nedtm45o1d46k5/imagecache-small.png?raw=1)
+
 ## What is it?
 
 Node image generation module based on [sharp](https://github.com/lovell/sharp) and inspired by Drupal's image styles.
@@ -223,3 +225,7 @@ Configuration:
 - `sigma`: The sigma of the Gaussian mask. Defaults to `1`.
 - `flat`: The level of sharpening to apply to "flat" areas. Defaults to `1.0`.
 - `jagged`: The level of sharpening to apply to "jagged" areas. Defaults to `2.0`.
+
+## Thanks to:
+
+- [Smashicons - Flaticon](https://www.flaticon.com/free-icons/image-editing) for the logo.
