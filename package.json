@@ -45,7 +45,7 @@
     "generateNotes": "./node_modules/@semantic-release/release-notes-generator"
   },
   "dependencies": {
-    "sharp": "0.24.0",
+    "sharp": "^0.30.7",
     "string": "3.3.3"
   },
   "devDependencies": {
