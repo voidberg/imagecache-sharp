@@ -1,0 +1,304 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>imagecache-sharp</title>
+	<meta name="description" content="Documentation for imagecache-sharp">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">imagecache-sharp</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>imagecache-sharp</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p><a href="https://app.codeship.com/projects/225818"> <img src="https://app.codeship.com/projects/2adcc0e0-31b3-0135-88a3-36beedd22907/status?branch=master" alt="Codeship Status for voidberg/imagecache-sharp"></a><a href="https://www.npmjs.com/package/imagecache-sharp"><img src="https://img.shields.io/npm/v/imagecache-sharp.svg" alt="Latest release on NPM"></a>
+					<a href="http://commitizen.github.io/cz-cli/"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly"></a>
+					<a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a>
+					<a href="https://david-dm.org/voidberg/imagecache-sharp#info=dependencies&amp;view=table"><img src="https://david-dm.org/voidberg/imagecache-sharp.svg" alt="David-dm.org"></a>
+					<a href="https://david-dm.org/voidberg/imagecache-sharp#info=devDependencies&amp;view=table"><img src="https://david-dm.org/voidberg/imagecache-sharp/dev-status.svg" alt="David-dm.org"></a>
+				<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/npm/l/imagecache-sharp.svg" alt="Apache 2.0 License"></a></p>
+				<a href="#what-is-it" id="what-is-it" style="color: inherit; text-decoration: none;">
+					<h2>What is it?</h2>
+				</a>
+				<p>Node image generation module based on <a href="https://github.com/lovell/sharp">sharp</a> and inspired by Drupal&#39;s image styles.</p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<ul>
+					<li><code>npm install imagecache-sharp</code></li>
+				</ul>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<pre><code><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">presets</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;./presets&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">ImageCache</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;imagecache-sharp&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">imagecache</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">ImageCache</span><span style="color: #000000">(</span><span style="color: #001080">presets</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">imagecache</span><span style="color: #000000">.</span><span style="color: #795E26">render</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;./in.png&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;preset_one&#039;</span><span style="color: #000000">, (</span><span style="color: #001080">err</span><span style="color: #000000">, </span><span style="color: #001080">sharpInstance</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">err</span><span style="color: #000000">) {</span>
+<span style="color: #000000">        </span><span style="color: #AF00DB">throw</span><span style="color: #000000"> </span><span style="color: #001080">err</span><span style="color: #000000">;</span>
+<span style="color: #000000">    }</span>
+
+<span style="color: #000000">  </span><span style="color: #008000">// Save the image</span>
+<span style="color: #000000">  </span><span style="color: #001080">sharpInstance</span><span style="color: #000000">.</span><span style="color: #795E26">toFile</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;out.png&#039;</span><span style="color: #000000">, (</span><span style="color: #001080">err</span><span style="color: #000000">, </span><span style="color: #001080">info</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #008000">// ...</span>
+<span style="color: #000000">  });</span>
+
+<span style="color: #000000">  </span><span style="color: #008000">// Get a buffer, stream it etc</span>
+<span style="color: #000000">  </span><span style="color: #001080">sharpInstance</span><span style="color: #000000">.</span><span style="color: #795E26">toBuffer</span><span style="color: #000000">((</span><span style="color: #001080">err</span><span style="color: #000000">, </span><span style="color: #001080">data</span><span style="color: #000000">, </span><span style="color: #001080">info</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #008000">// ...</span>
+<span style="color: #000000">  });</span>
+<span style="color: #000000">})</span>
+</code></pre>
+				<p>The render callback returns a <code>sharp</code> instance which can be used in various ways for outputting the final image. For a list of options see <a href="https://sharp.pixelplumbing.com/api-constructor">sharp&#39;s documentation</a>.</p>
+				<a href="#presets-structure" id="presets-structure" style="color: inherit; text-decoration: none;">
+					<h2>Presets structure</h2>
+				</a>
+				<pre><code><span style="color: #000000">{</span>
+<span style="color: #000000">  preset_one: {</span>
+<span style="color: #000000">    presetname: </span><span style="color: #A31515">&#039;preset_one&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    actions: [</span>
+<span style="color: #000000">      {</span>
+<span style="color: #000000">        </span><span style="color: #001080">action:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;scale_and_crop&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">config:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">          </span><span style="color: #001080">width:</span><span style="color: #000000"> </span><span style="color: #098658">100</span><span style="color: #000000">,</span>
+<span style="color: #000000">          </span><span style="color: #001080">height:</span><span style="color: #000000"> </span><span style="color: #098658">300</span>
+<span style="color: #000000">        }</span>
+<span style="color: #000000">      },</span>
+<span style="color: #000000">      {</span>
+<span style="color: #000000">        </span><span style="color: #001080">action:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;define_canvas&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">config:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">          </span><span style="color: #001080">color:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;#333333&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">width:</span><span style="color: #000000"> </span><span style="color: #098658">400</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">height:</span><span style="color: #000000"> </span><span style="color: #098658">400</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">xpos:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;center&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">ypos:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;center&#039;</span>
+<span style="color: #000000">        }</span>
+<span style="color: #000000">      }</span>
+<span style="color: #000000">    ]</span>
+<span style="color: #000000">  },</span>
+<span style="color: #000000">  preset_two: {</span>
+<span style="color: #000000">    presetname: </span><span style="color: #A31515">&#039;preset_two&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    actions: [</span>
+<span style="color: #000000">      {</span>
+<span style="color: #000000">        </span><span style="color: #001080">action:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;scale_and_crop&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">config:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">          </span><span style="color: #001080">width:</span><span style="color: #000000"> </span><span style="color: #098658">70</span><span style="color: #000000">,</span>
+<span style="color: #000000">          </span><span style="color: #001080">height:</span><span style="color: #000000"> </span><span style="color: #098658">70</span><span style="color: #000000">,</span>
+<span style="color: #000000">        }</span>
+<span style="color: #000000">      }</span>
+<span style="color: #000000">    ]</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">}</span>
+</code></pre>
+				<a href="#imagecache-actions" id="imagecache-actions" style="color: inherit; text-decoration: none;">
+					<h2>Imagecache actions:</h2>
+				</a>
+				<a href="#blur" id="blur" style="color: inherit; text-decoration: none;">
+					<h3>Blur</h3>
+				</a>
+				<p>Blurs the image.</p>
+				<p>Action name: <code>blur</code>.</p>
+				<p>Configuration:</p>
+				<ul>
+					<li>blur: A value between 0.3 and 1000 representing the sigma of the Gaussian mask. Defaults to <code>1</code>.</li>
+				</ul>
+				<a href="#define-canvas" id="define-canvas" style="color: inherit; text-decoration: none;">
+					<h3>Define canvas</h3>
+				</a>
+				<p>Defines a new canvas and overlays the current image.</p>
+				<p>Action name: <code>define_canvas</code>.</p>
+				<p>Configuration:</p>
+				<ul>
+					<li>width: The width of the canvas.</li>
+					<li>height: The height of the canvas.</li>
+					<li>channels: Number of channels. Defaults to <code>4</code>.</li>
+					<li>background: The background color of the canvas in hex format.</li>
+				</ul>
+				<a href="#file" id="file" style="color: inherit; text-decoration: none;">
+					<h3>File</h3>
+				</a>
+				<p>Loads an image and overlays it on the current image.</p>
+				<p>Action name: <code>file</code>.</p>
+				<p>Configuration:</p>
+				<ul>
+					<li>path: The path of the file.</li>
+					<li>gravity: Gravity at which to place the overlay. Possible values are <code>north</code>, <code>northeast</code>, <code>east</code>, <code>southeast</code>, <code>south</code>, <code>southwest</code>, <code>west</code>, <code>northwest</code>, <code>center</code> and <code>centre</code>. Defaults to <code>center</code>.</li>
+					<li>tile: Set to true to repeat the overlay image across the entire image with the given <code>gravity</code>. Defaults to <code>false</code>.</li>
+					<li>cutout: Set to true to apply only the alpha channel of the overlay image to the input image, giving the appearance of one image being cut out of another. Defaults to <code>false</code>.</li>
+				</ul>
+				<a href="#flip" id="flip" style="color: inherit; text-decoration: none;">
+					<h3>Flip</h3>
+				</a>
+				<p>Flips the image on a given axis.</p>
+				<p>Action name: <code>flip</code>.</p>
+				<p>Configuration:</p>
+				<ul>
+					<li>axis: The axis to flip on. Defaults to <code>y</code>.</li>
+				</ul>
+				<a href="#gamma" id="gamma" style="color: inherit; text-decoration: none;">
+					<h3>Gamma</h3>
+				</a>
+				<p>Apply a gamma correction to the image.</p>
+				<p>Action name: <code>gamma</code>.</p>
+				<p>Configuration:</p>
+				<ul>
+					<li>gamma: Value between 1.0 and 3.0. Defaults to <code>2.2</code>.</li>
+				</ul>
+				<a href="#greyscale" id="greyscale" style="color: inherit; text-decoration: none;">
+					<h3>Greyscale</h3>
+				</a>
+				<p>Convert to 8-bit greyscale, 256 shades of grey.</p>
+				<p>Action name: <code>greyscale</code>.</p>
+				<a href="#negate" id="negate" style="color: inherit; text-decoration: none;">
+					<h3>Negate</h3>
+				</a>
+				<p>Produce the &quot;negative&quot; of the image.</p>
+				<p>Action name: <code>negate</code>.</p>
+				<a href="#normalize" id="normalize" style="color: inherit; text-decoration: none;">
+					<h3>Normalize</h3>
+				</a>
+				<p>Enhance output image contrast by stretching its luminance to cover the full dynamic range.</p>
+				<p>Action name: <code>normalize</code>.</p>
+				<a href="#rotate" id="rotate" style="color: inherit; text-decoration: none;">
+					<h3>Rotate</h3>
+				</a>
+				<p>Rotates the image based on the EXIF data or at a specified angle.</p>
+				<p>Action name: <code>rotate</code>.</p>
+				<p>Configuration:</p>
+				<ul>
+					<li>angle: Angle, multiple of 90. Defaults to <code>auto</code> which uses EXIF.</li>
+				</ul>
+				<a href="#scale" id="scale" style="color: inherit; text-decoration: none;">
+					<h3>Scale</h3>
+				</a>
+				<p>Scales the image ignoring the aspect ratio.</p>
+				<p>Action name: <code>scale</code>.</p>
+				<p>Configuration:</p>
+				<ul>
+					<li>width: The width of the new image. Can be a number or a percent value.</li>
+					<li>height: The height of the new image. Can be a number or a percent value.</li>
+				</ul>
+				<a href="#scale-and-crop" id="scale-and-crop" style="color: inherit; text-decoration: none;">
+					<h3>Scale and crop</h3>
+				</a>
+				<p>Scales and crops the image mantaining the aspect ratio.</p>
+				<p>Action name: <code>scale_and_crop</code>.</p>
+				<p>Configuration:</p>
+				<ul>
+					<li>width: The width of the new image. Can be a number or a percent value.</li>
+					<li>height: The height of the new image. Can be a number or a percent value.</li>
+					<li>gravity: Where to crop from. Possible values are <code>north</code>, <code>northeast</code>, <code>east</code>, <code>southeast</code>, <code>south</code>, <code>southwest</code>, <code>west</code>, <code>northwest</code>, <code>center</code> and <code>centre</code>. Defaults to <code>center</code>.</li>
+				</ul>
+				<a href="#sharpen" id="sharpen" style="color: inherit; text-decoration: none;">
+					<h3>Sharpen</h3>
+				</a>
+				<p>Sharpen the image.</p>
+				<p>Action name: <code>sharpen</code>.</p>
+				<p>Configuration:</p>
+				<ul>
+					<li>sigma: The sigma of the Gaussian mask. Defaults to <code>1</code>.</li>
+					<li>flat: The level of sharpening to apply to &quot;flat&quot; areas. Defaults to <code>1.0</code>.</li>
+					<li>jagged: The level of sharpening to apply to &quot;jagged&quot; areas. Defaults to <code>2.0</code>.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/imagecache.html" class="tsd-kind-icon">Image<wbr>Cache</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#action" class="tsd-kind-icon">Action</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#actionshash" class="tsd-kind-icon">Actions<wbr>Hash</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#plugin" class="tsd-kind-icon">Plugin</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#preset" class="tsd-kind-icon">Preset</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

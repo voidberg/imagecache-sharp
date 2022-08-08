@@ -1,45 +1,61 @@
-'use strict';
-
-module.exports = {
-  attach: function attach(app) {
-    app.actions.scale = (image, metadata, config, callback) => {
-      const iWidth = metadata.width;
-      const iHeight = metadata.height;
-      const ratio = iWidth / iHeight;
-
-      const maxWidth = config.maxWidth ? app.actions.convertDimension(config.maxWidth, iWidth) : 0;
-      const maxHeight = config.maxHeight ? app.actions.convertDimension(config.maxHeight, iHeight) : 0;
-
-      let width = config.width ? app.actions.convertDimension(config.width, iWidth) : 0;
-      let height = config.height ? app.actions.convertDimension(config.height, iHeight) : 0;
-
-      const upscale = config.upscale ? app.actions.convertBool(config.upscale) : true;
-
-      if (!width && !height && !maxWidth && !maxHeight) {
-        return callback(undefined, image);
-      }
-
-      if (!upscale) {
-        if (width > iWidth || height > iHeight) {
-          return callback(undefined, image);
-        }
-      }
-
-      if (maxWidth && maxHeight) {
-        if (iWidth > iHeight) {
-          width = maxWidth;
-        } else {
-          height = maxHeight;
-        }
-      }
-
-      if (width === 0) {
-        width = Math.round(height * ratio);
-      } else if (height === 0) {
-        height = Math.round(width / ratio);
-      }
-
-      return callback(undefined, image.resize(width, height, { canvas: 'ignoreAspectRatio' }));
-    };
-  }
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var PluginScale = {
+    name: 'Scale',
+    description: '',
+    actions: {
+        scale: function (instance, image, metadata, config) {
+            var convertDimension = instance.getAction('convertDimension');
+            var iWidth = metadata.width;
+            var iHeight = metadata.height;
+            var ratio = iWidth / iHeight;
+            var maxWidth = config.maxWidth
+                ? convertDimension(instance, config.maxWidth, iWidth)
+                : 0;
+            var maxHeight = config.maxHeight
+                ? convertDimension(instance, config.maxHeight, iHeight)
+                : 0;
+            var width = config.width
+                ? convertDimension(instance, config.width, iWidth)
+                : 0;
+            var height = config.height
+                ? convertDimension(instance, config.height, iHeight)
+                : 0;
+            var upscale = Object.prototype.hasOwnProperty.call(config, 'upscale')
+                ? config.upscale
+                : true;
+            return new Promise(function (resolve, reject) {
+                try {
+                    if (!width && !height && !maxWidth && !maxHeight) {
+                        return resolve(image);
+                    }
+                    if (!upscale) {
+                        if (width > iWidth || height > iHeight) {
+                            return resolve(image);
+                        }
+                    }
+                    if (maxWidth && maxHeight) {
+                        if (iWidth > iHeight) {
+                            width = maxWidth;
+                        }
+                        else {
+                            height = maxHeight;
+                        }
+                    }
+                    if (width === 0) {
+                        width = Math.round(height * ratio);
+                    }
+                    else if (height === 0) {
+                        height = Math.round(width / ratio);
+                    }
+                    return resolve(image.resize(width, height, { fit: 'fill' }));
+                }
+                catch (e) {
+                    return reject(e);
+                }
+            });
+        },
+    },
 };
+exports.default = PluginScale;
+//# sourceMappingURL=scale.js.map

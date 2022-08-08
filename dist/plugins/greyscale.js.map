@@ -1,0 +1,1 @@
+{"version":3,"file":"greyscale.js","sourceRoot":"","sources":["../../src/plugins/greyscale.ts"],"names":[],"mappings":";;AAGA,IAAM,eAAe,GAAW;IAC9B,IAAI,EAAE,WAAW;IACjB,WAAW,EAAE,EAAE;IACf,OAAO,EAAE;QACP,SAAS,EAAE,UAAC,QAAoB,EAAE,KAAkB;YAClD,OAAO,KAAK,CAAC,SAAS,EAAE,CAAC;QAC3B,CAAC;KACF;CACF,CAAC;AAEF,kBAAe,eAAe,CAAC"}

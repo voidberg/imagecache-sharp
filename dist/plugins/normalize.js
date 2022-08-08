@@ -1,9 +1,20 @@
 "use strict";
-
-module.exports = {
-  attach: function attach(app) {
-    app.actions.normalize = (image, metadata, config, callback) => {
-      return callback(undefined, image.normalize());
-    };
-  }
+Object.defineProperty(exports, "__esModule", { value: true });
+var PluginNormalize = {
+    name: 'Normalize',
+    description: '',
+    actions: {
+        normalize: function (instance, image) {
+            return new Promise(function (resolve, reject) {
+                try {
+                    resolve(image.normalize());
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
+        },
+    },
 };
+exports.default = PluginNormalize;
+//# sourceMappingURL=normalize.js.map

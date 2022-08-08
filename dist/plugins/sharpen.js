@@ -1,13 +1,23 @@
 "use strict";
-
-module.exports = {
-  attach: function attach(app) {
-    app.actions.sharpen = (image, metadata, config, callback) => {
-      const sigma = config.sigma || 1;
-      const flat = config.flat || 1.0;
-      const jagged = config.jagged || 2.0;
-
-      return callback(undefined, image.sharpen(sigma, flat, jagged));
-    };
-  }
+Object.defineProperty(exports, "__esModule", { value: true });
+var PluginSharpen = {
+    name: 'Sharpen',
+    description: '',
+    actions: {
+        sharpen: function (instance, image, metadata, config) {
+            var sigma = config.sigma || 1;
+            var flat = config.flat || 1.0;
+            var jagged = config.jagged || 2.0;
+            return new Promise(function (resolve, reject) {
+                try {
+                    resolve(image.sharpen(sigma, flat, jagged));
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
+        },
+    },
 };
+exports.default = PluginSharpen;
+//# sourceMappingURL=sharpen.js.map

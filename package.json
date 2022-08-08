@@ -15,19 +15,21 @@
     "url": "http://alexandrubadiu.ro"
   },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "precommit": "npm test",
-    "prepush": "npm test",
-    "prebuild": "rm -rf dist && mkdir dist && mkdir dist/plugins",
-    "build": "babel src -d dist",
-    "watch": "babel -w src -d dist",
+    "docs": "typedoc --entryPoints src/imagecache.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "ts-node": "ts-node",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist build",
+    "watch": "tsc -p tsconfig.json --watch",
     "commit": "git-cz",
-    "eslint": "eslint src",
-    "test": "mocha test/index.test.js --compilers js:babel-register",
-    "test:watch": "npm t -- -w",
-    "cover": "nyc --reporter=lcov --reporter=text --require babel-register npm t",
-    "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release"
   },
   "homepage": "https://github.com/voidberg/imagecache-sharp",
   "repository": {
@@ -40,31 +42,36 @@
   },
   "readmeFilename": "README.md",
   "release": {
-    "generateNotes": "./node_modules/@semantic-release/release-notes-generator",
-    "verifyConditions": [
-      "./node_modules/@semantic-release/condition-codeship"
-    ]
+    "generateNotes": "./node_modules/@semantic-release/release-notes-generator"
   },
   "dependencies": {
-    "async": "2.6.4",
-    "sharp": "0.23.4",
+    "sharp": "^0.30.7",
     "string": "3.3.3"
   },
   "devDependencies": {
-    "@semantic-release/condition-codeship": "^1.1.0",
-    "@semantic-release/release-notes-generator": "^2.0.0",
-    "assert": "^1.4.1",
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.5.2",
-    "babel-register": "^6.24.1",
-    "codecov.io": "^0.1.6",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@types/jest": "^26.0.23",
+    "@types/jest-image-snapshot": "^4.3.0",
+    "@types/node": "^15.0.1",
+    "@types/sharp": "^0.28.0",
+    "@types/string": "^0.0.30",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "commitizen": "1.0.5",
-    "eslint": "3.19.0",
-    "eslint-config-airbnb-base": "11.2.0",
-    "eslint-plugin-import": "2.3.0",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "^7.25.0",
     "husky": "^0.13.4",
-    "mocha": "^3.4.2",
-    "nyc": "^11.0.2",
-    "semantic-release": "^17.2.3"
+    "jest": "^26.6.3",
+    "jest-image-snapshot": "^4.5.0",
+    "semantic-release": "^19.0.3",
+    "ts-jest": "^26.5.5",
+    "ts-node": "^9.1.1",
+    "typedoc": "^0.20.36",
+    "typescript": "^4.2.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
