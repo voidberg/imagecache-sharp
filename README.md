@@ -1,5 +1,5 @@
 [![Latest release on NPM](https://img.shields.io/npm/v/imagecache-sharp.svg)](https://www.npmjs.com/package/imagecache-sharp)
-[![Build states](https://github.com/voidberg/imagecache-sharp/workflows/Node.js%20CI/badge.svg)](https://github.com/voidberg/imagecache-sharp/actions?query=workflow%3A%22Node.js+CI%22+branch%3Amaster++)
+[![Build states](https://github.com/voidberg/imagecache-sharp/workflows/CI/badge.svg)](https://github.com/voidberg/imagecache-sharp/actions?query=workflow%3A%22CI%22+branch%3Amaster++)
 ![Codecov](https://img.shields.io/codecov/c/gh/voidberg/imagecache-sharp)
 [![Semantic release](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release/)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
