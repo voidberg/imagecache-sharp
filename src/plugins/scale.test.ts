@@ -75,3 +75,95 @@ test('applies scale with a mix of exact and relative dimensions', async () => {
     failureThreshold: 10,
   });
 });
+
+test('does not apply scale when dimensions are missing', async () => {
+  const imagecache = new ImageCache([
+    {
+      presetName: 'scale',
+      actions: [
+        {
+          action: 'scale',
+          config: {},
+        },
+      ],
+    },
+  ]);
+
+  const image = await imagecache.render('./examples/in.png', 'scale');
+  const imageBuffer = await image.toBuffer();
+  expect(imageBuffer).toMatchImageSnapshot({
+    failureThresholdType: 'percent',
+    failureThreshold: 1,
+  });
+});
+
+test('does not scale when upscale is false and final dimensions are bigger', async () => {
+  const imagecache = new ImageCache([
+    {
+      presetName: 'scale',
+      actions: [
+        {
+          action: 'scale',
+          config: {
+            width: 20000,
+            height: 10000,
+            upscale: false,
+          },
+        },
+      ],
+    },
+  ]);
+
+  const image = await imagecache.render('./examples/in.png', 'scale');
+  const imageBuffer = await image.toBuffer();
+  expect(imageBuffer).toMatchImageSnapshot({
+    failureThresholdType: 'percent',
+    failureThreshold: 1,
+  });
+});
+
+test('applies scale when width is missing', async () => {
+  const imagecache = new ImageCache([
+    {
+      presetName: 'scale',
+      actions: [
+        {
+          action: 'scale',
+          config: {
+            height: 100,
+          },
+        },
+      ],
+    },
+  ]);
+
+  const image = await imagecache.render('./examples/in.png', 'scale');
+  const imageBuffer = await image.toBuffer();
+  expect(imageBuffer).toMatchImageSnapshot({
+    failureThresholdType: 'percent',
+    failureThreshold: 10,
+  });
+});
+
+test('applies scale when height is missing', async () => {
+  const imagecache = new ImageCache([
+    {
+      presetName: 'scale',
+      actions: [
+        {
+          action: 'scale',
+          config: {
+            width: 200,
+          },
+        },
+      ],
+    },
+  ]);
+
+  const image = await imagecache.render('./examples/in.png', 'scale');
+  const imageBuffer = await image.toBuffer();
+  expect(imageBuffer).toMatchImageSnapshot({
+    failureThresholdType: 'percent',
+    failureThreshold: 10,
+  });
+});
