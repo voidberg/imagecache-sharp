@@ -9,17 +9,11 @@
 
 ## What is it?
 
-Node image generation module based on [sharp](https://github.com/lovell/sharp) and inspired by Drupal's image styles.
-
-**NOTE:** This is a beta of the 2.0 version, a full rewrite using TypeScript and the latest version of Sharp.
+Node image processing module based on [sharp](https://github.com/lovell/sharp) and inspired by Drupal's image styles. It allows you to create presets based on a list of chained actions, such as resizing, applying a watermark, or applying various image operations (blur, flip, negate, etc).
 
 ## Installation
 
 - `npm install imagecache-sharp`
-
-**Note:** please use the beta version that adds TypeScript support and works with the latest version of Sharp:
-
-- `npm install imagecache-sharp@beta`
 
 ## Usage
 
