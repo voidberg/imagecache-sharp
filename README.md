@@ -1,4 +1,5 @@
 [![Latest release on NPM](https://img.shields.io/npm/v/imagecache-sharp.svg)](https://www.npmjs.com/package/imagecache-sharp)
+[![npm module downloads per month](http://img.shields.io/npm/dm/eslint-bamboo-formatter.svg?style=flat)](https://www.npmjs.org/package/imagecache-sharp)
 [![Build states](https://github.com/voidberg/imagecache-sharp/workflows/CI/badge.svg)](https://github.com/voidberg/imagecache-sharp/actions?query=workflow%3A%22CI%22+branch%3Amaster++)
 ![Codecov](https://img.shields.io/codecov/c/gh/voidberg/imagecache-sharp)
 [![Semantic release](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release/)
