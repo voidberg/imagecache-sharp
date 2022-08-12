@@ -5,9 +5,9 @@ name: CI
 
 on:
   push:
-    branches: ['master', 'v2.0.0']
+    branches: ['master', 'main']
   pull_request:
-    branches: ['master']
+    branches: ['master', 'main']
 
 jobs:
   build:
