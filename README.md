@@ -10,7 +10,7 @@
 
 ## What is it?
 
-Imagecache Sharp is a node image processing module based on [sharp](https://github.com/lovell/sharp) that allows you to create presets based on a list of chained actions, such as resizing, applying a watermark, or applying various image operations (blur, flip, negate, etc).
+Imagecache Sharp is a node image processing library based on [sharp](https://github.com/lovell/sharp) that allows you to create presets based on a list of chained actions, such as resizing, applying a watermark, or applying various image operations (blur, flip, negate, etc).
 
 It was inspired by Drupal's [imagecache module](https://www.drupal.org/project/imagecache) (now called image styles), hence the name.
 
