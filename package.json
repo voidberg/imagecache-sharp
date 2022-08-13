@@ -42,7 +42,12 @@
   },
   "readmeFilename": "README.md",
   "release": {
-    "generateNotes": "./node_modules/@semantic-release/release-notes-generator"
+    "generateNotes": "./node_modules/@semantic-release/release-notes-generator",
+    "branches": [
+      "main",
+      "next",
+      "beta"
+    ]
   },
   "dependencies": {
     "sharp": "^0.30.7",
