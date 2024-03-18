@@ -50,7 +50,7 @@
     ]
   },
   "dependencies": {
-    "sharp": "^0.30.7",
+    "sharp": "^0.32.6",
     "string": "3.3.3"
   },
   "devDependencies": {
