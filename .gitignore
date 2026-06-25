@@ -64,3 +64,5 @@ examples/out*
 dist
 
 docs
+
+test-results.junit.xml
