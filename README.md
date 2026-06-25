@@ -1,9 +1,7 @@
 [![Latest release on NPM](https://img.shields.io/npm/v/imagecache-sharp.svg)](https://www.npmjs.com/package/imagecache-sharp)
 [![npm module downloads per month](http://img.shields.io/npm/dm/imagecache-sharp.svg?style=flat)](https://www.npmjs.org/package/imagecache-sharp)
-[![Build states](https://github.com/voidberg/imagecache-sharp/workflows/CI/badge.svg)](https://github.com/voidberg/imagecache-sharp/actions?query=workflow%3A%22CI%22+branch%3Amaster++)
+[![Build states](https://github.com/voidberg/imagecache-sharp/workflows/CI/badge.svg)](https://github.com/voidberg/imagecache-sharp/actions?query=workflow%3A%22CI%22+branch%3Amain++)
 [![Codecov](https://img.shields.io/codecov/c/gh/voidberg/imagecache-sharp)](https://codecov.io/github/voidberg/imagecache-sharp)
-[![Semantic release](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release/)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Apache 2.0 License](https://img.shields.io/npm/l/imagecache-sharp.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ![ImageCache Sharp](https://www.dropbox.com/s/7nedtm45o1d46k5/imagecache-small.png?raw=1)
@@ -20,10 +18,12 @@ It was inspired by Drupal's [imagecache module](https://www.drupal.org/project/i
 
 - `npm install imagecache-sharp`
 
+Requires Node.js 20.9.0 or newer (the floor set by sharp 0.35).
+
 ## Usage
 
 ```typescript
-import { ImageCache, Image } from "../src/imagecache";
+import { ImageCache, Image } from "imagecache-sharp";
 import presets from "./presets";
 
 const imagecache: ImageCache = new ImageCache(presets);
