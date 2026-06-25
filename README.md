@@ -2,7 +2,7 @@
 [![npm module downloads per month](http://img.shields.io/npm/dm/imagecache-sharp.svg?style=flat)](https://www.npmjs.org/package/imagecache-sharp)
 [![Build states](https://github.com/voidberg/imagecache-sharp/workflows/CI/badge.svg)](https://github.com/voidberg/imagecache-sharp/actions?query=workflow%3A%22CI%22+branch%3Amain++)
 [![Codecov](https://img.shields.io/codecov/c/gh/voidberg/imagecache-sharp)](https://codecov.io/github/voidberg/imagecache-sharp)
-[![Apache 2.0 License](https://img.shields.io/npm/l/imagecache-sharp.svg)](https://opensource.org/licenses/Apache-2.0)
+[![MIT License](https://img.shields.io/npm/l/imagecache-sharp.svg)](https://opensource.org/licenses/MIT)
 
 ![ImageCache Sharp](https://www.dropbox.com/s/7nedtm45o1d46k5/imagecache-small.png?raw=1)
 
