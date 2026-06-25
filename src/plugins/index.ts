@@ -1,4 +1,4 @@
-import { Plugin } from '../imagecache';
+import type { Plugin } from '../imagecache';
 import PluginConverter from './_converters';
 import PluginBlur from './blur';
 import PluginDefineCanvas from './define_canvas';
@@ -9,11 +9,11 @@ import PluginGreyscale from './greyscale';
 import PluginNegate from './negate';
 import PluginNormalize from './normalize';
 import PluginRotate from './rotate';
-import PluginScaleCrop from './scale_and_crop';
 import PluginScale from './scale';
+import PluginScaleCrop from './scale_and_crop';
 import PluginSharpen from './sharpen';
 
-export default [
+const plugins: Plugin[] = [
   PluginConverter,
   PluginBlur,
   PluginDefineCanvas,
@@ -28,3 +28,5 @@ export default [
   PluginScale,
   PluginSharpen,
 ];
+
+export default plugins;

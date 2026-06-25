@@ -1,5 +1,4 @@
-import sharp from 'sharp';
-import { ImageCache, Plugin } from '../imagecache';
+import type { Image, ImageCache, Plugin } from '../imagecache';
 
 const PluginRotate: Plugin = {
   name: 'Rotate',
@@ -7,10 +6,10 @@ const PluginRotate: Plugin = {
   actions: {
     rotate: (
       instance: ImageCache,
-      image: sharp.Sharp,
+      image: Image,
       metadata: object,
-      config: { angle: number }
-    ): sharp.Sharp => {
+      config: { angle: number },
+    ): Image => {
       const angle = config.angle || 'auto';
 
       if (angle === 'auto') {

@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import { ImageCache, Plugin } from '../imagecache';
+import type { Image, ImageCache, Plugin } from '../imagecache';
 
 const PluginDefineCanvas: Plugin = {
   name: 'Define canvas',
@@ -7,11 +7,11 @@ const PluginDefineCanvas: Plugin = {
   actions: {
     define_canvas: (
       instance: ImageCache,
-      image: sharp.Sharp,
+      image: Image,
       metadata,
-      config
-    ): Promise<sharp.Sharp> => {
-      return new Promise<sharp.Sharp>((resolve, reject) => {
+      config,
+    ): Promise<Image> => {
+      return new Promise<Image>((resolve, reject) => {
         image
           .composite([
             {

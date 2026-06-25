@@ -1,5 +1,4 @@
-import sharp from 'sharp';
-import { ImageCache, Plugin } from '../imagecache';
+import type { Image, ImageCache, Plugin } from '../imagecache';
 
 const PluginFlip: Plugin = {
   name: 'Flip and flop',
@@ -7,10 +6,10 @@ const PluginFlip: Plugin = {
   actions: {
     flip: (
       instance: ImageCache,
-      image: sharp.Sharp,
+      image: Image,
       metadata: object,
-      config: { axis: string }
-    ): sharp.Sharp => {
+      config: { axis: string },
+    ): Image => {
       const axis = config.axis || 'y';
 
       if (axis === 'y') {

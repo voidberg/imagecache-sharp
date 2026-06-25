@@ -1,5 +1,4 @@
-import sharp from 'sharp';
-import { ImageCache, Plugin } from '../imagecache';
+import type { Image, ImageCache, Plugin } from '../imagecache';
 
 const PluginFile: Plugin = {
   name: 'File',
@@ -7,10 +6,10 @@ const PluginFile: Plugin = {
   actions: {
     file: (
       instance: ImageCache,
-      image: sharp.Sharp,
+      image: Image,
       metadata: object,
-      config: { path: string; gravity: string; tile: boolean }
-    ): sharp.Sharp => {
+      config: { path: string; gravity: string; tile: boolean },
+    ): Image => {
       const filepath = config.path;
 
       return image.composite([

@@ -1,5 +1,4 @@
-import sharp from 'sharp';
-import { ImageCache, Plugin } from '../imagecache';
+import type { Image, ImageCache, Plugin } from '../imagecache';
 
 const PluginBlur: Plugin = {
   name: 'Blur',
@@ -7,13 +6,13 @@ const PluginBlur: Plugin = {
   actions: {
     blur: (
       instance: ImageCache,
-      image: sharp.Sharp,
+      image: Image,
       metadata: object,
-      config: { sigma: number }
-    ): Promise<sharp.Sharp> => {
+      config: { sigma: number },
+    ): Promise<Image> => {
       const sigma = config.sigma || 50;
 
-      return new Promise<sharp.Sharp>((resolve, reject) => {
+      return new Promise<Image>((resolve, reject) => {
         try {
           resolve(image.blur(sigma));
         } catch (e) {

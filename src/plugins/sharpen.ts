@@ -1,5 +1,4 @@
-import sharp from 'sharp';
-import { ImageCache, Plugin } from '../imagecache';
+import type { Image, ImageCache, Plugin } from '../imagecache';
 
 const PluginSharpen: Plugin = {
   name: 'Sharpen',
@@ -7,17 +6,17 @@ const PluginSharpen: Plugin = {
   actions: {
     sharpen: (
       instance: ImageCache,
-      image: sharp.Sharp,
+      image: Image,
       metadata,
-      config
-    ): Promise<sharp.Sharp> => {
+      config,
+    ): Promise<Image> => {
       const sigma = config.sigma || 1;
       const flat = config.flat || 1.0;
       const jagged = config.jagged || 2.0;
 
-      return new Promise<sharp.Sharp>((resolve, reject): void => {
+      return new Promise<Image>((resolve, reject): void => {
         try {
-          resolve(image.sharpen(sigma, flat, jagged));
+          resolve(image.sharpen({ sigma, m1: flat, m2: jagged }));
         } catch (e) {
           reject(e);
         }

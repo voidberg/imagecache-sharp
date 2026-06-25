@@ -1,9 +1,11 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import sharp from 'sharp';
 import _plugins from './plugins/index';
 
+export type ActionCallback = (instance: ImageCache, ...args: any[]) => any;
+
 export type ActionsHash = {
-  [name: string]: Function;
+  [name: string]: ActionCallback;
 };
 
 export type Plugin = {
@@ -14,7 +16,7 @@ export type Plugin = {
 
 export type Action = {
   action: string;
-  config?: any;
+  config?: Record<string, unknown>;
 };
 
 export type Preset = {
@@ -22,7 +24,7 @@ export type Preset = {
   actions: Action[];
 };
 
-export type Image = sharp.Sharp;
+export type Image = ReturnType<typeof sharp>;
 
 export class ImageCache {
   private presets: Preset[];
@@ -42,9 +44,9 @@ export class ImageCache {
     this.actions = {};
 
     _plugins.forEach((plugin) => {
-      Object.keys(plugin.actions).forEach((name) =>
-        this.registerAction(name, plugin.actions[name])
-      );
+      Object.keys(plugin.actions).forEach((name) => {
+        this.registerAction(name, plugin.actions[name]);
+      });
     }, this);
   }
 
@@ -79,7 +81,7 @@ export class ImageCache {
    * Registers an action from a plugin
    *
    */
-  registerAction(name: string, callback: Function) {
+  registerAction(name: string, callback: ActionCallback) {
     this.actions[name] = callback;
   }
 
@@ -87,7 +89,7 @@ export class ImageCache {
    * Gets an action
    *
    */
-  getAction(name: string): Function {
+  getAction(name: string): ActionCallback {
     return this.actions[name];
   }
 
@@ -98,51 +100,37 @@ export class ImageCache {
    * @param presetName The preset to use
    */
   async render(image: string, presetName: string): Promise<Image> {
-    let sharpInstance: Image;
-    let metadata: Object;
+    const preset = this.presets.find(
+      (preset) => preset.presetName === presetName,
+    );
+    if (!preset) {
+      throw new Error(`Preset ${presetName} could not be found.`);
+    }
 
-    return new Promise<Image>(async (resolve, reject): Promise<void> => {
-      const preset = this.presets.find(
-        (preset) => preset.presetName === presetName
+    if (!fs.existsSync(image)) {
+      throw new Error(`File ${image} does not exist.`);
+    }
+
+    let sharpInstance: Image = sharp(image);
+    const metadata = await sharpInstance.metadata();
+
+    for (const action of preset.actions) {
+      const actionCallback = this.getAction(action.action);
+
+      if (!actionCallback) {
+        throw new Error(
+          `Action ${action.action} for preset ${presetName} not found in loaded plugins.`,
+        );
+      }
+
+      sharpInstance = await actionCallback(
+        this,
+        sharpInstance,
+        metadata,
+        action.config || {},
       );
-      if (!preset) {
-        return reject(new Error(`Preset ${presetName} could not be found.`));
-      }
+    }
 
-      if (!fs.existsSync(image)) {
-        return reject(new Error(`File ${image} does not exist.`));
-      }
-
-      try {
-        sharpInstance = sharp(image);
-      } catch (sharpErr) {
-        return reject(sharpErr);
-      }
-
-      metadata = await sharpInstance.metadata();
-
-      try {
-        for (const action of preset.actions) {
-          const actionCallback = this.getAction(action.action);
-
-          if (!actionCallback) {
-            throw new Error(
-              `Action ${action.action} for preset ${presetName} not found in loaded plugins.`
-            );
-          }
-
-          sharpInstance = await actionCallback(
-            this,
-            sharpInstance,
-            metadata,
-            action.config || {}
-          );
-        }
-      } catch (e) {
-        return reject(e);
-      }
-
-      resolve(sharpInstance);
-    });
+    return sharpInstance;
   }
 }

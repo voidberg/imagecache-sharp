@@ -46,6 +46,6 @@ test('failes when canvas dimensions are too big', async () => {
   ]);
 
   expect(
-    imagecache.render('./examples/in.png', 'define_canvas')
+    imagecache.render('./examples/in.png', 'define_canvas'),
   ).rejects.toThrow('Image to composite must have same dimensions or smaller');
 });

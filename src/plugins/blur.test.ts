@@ -62,6 +62,6 @@ test('fails to blurs with an invalid sigma value', async () => {
   ]);
 
   expect(imagecache.render('./examples/in.png', 'blur')).rejects.toThrow(
-    'Expected number between 0.3 and 1000 for sigma but received 0.1 of type number'
+    'Expected number between 0.3 and 1000 for sigma but received 0.1 of type number',
   );
 });

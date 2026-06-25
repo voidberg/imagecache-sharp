@@ -1,5 +1,4 @@
-import sharp from 'sharp';
-import { ImageCache, Plugin } from '../imagecache';
+import type { Image, ImageCache, Plugin } from '../imagecache';
 
 const PluginScale: Plugin = {
   name: 'Scale',
@@ -7,10 +6,10 @@ const PluginScale: Plugin = {
   actions: {
     scale: (
       instance: ImageCache,
-      image: sharp.Sharp,
+      image: Image,
       metadata,
-      config
-    ): Promise<sharp.Sharp> => {
+      config,
+    ): Promise<Image> => {
       const convertDimension = instance.getAction('convertDimension');
 
       const iWidth = metadata.width;
@@ -31,11 +30,9 @@ const PluginScale: Plugin = {
         ? convertDimension(instance, config.height, iHeight)
         : 0;
 
-      const upscale = Object.prototype.hasOwnProperty.call(config, 'upscale')
-        ? config.upscale
-        : true;
+      const upscale = Object.hasOwn(config, 'upscale') ? config.upscale : true;
 
-      return new Promise<sharp.Sharp>((resolve, reject) => {
+      return new Promise<Image>((resolve, reject) => {
         try {
           if (!width && !height && !maxWidth && !maxHeight) {
             return resolve(image);

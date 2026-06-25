@@ -1,5 +1,4 @@
-import sharp from 'sharp';
-import { ImageCache, Plugin } from '../imagecache';
+import type { Image, ImageCache, Plugin } from '../imagecache';
 
 const PluginScaleCrop: Plugin = {
   name: 'Scale and crop',
@@ -7,10 +6,10 @@ const PluginScaleCrop: Plugin = {
   actions: {
     scale_and_crop: (
       instance: ImageCache,
-      image: sharp.Sharp,
+      image: Image,
       metadata,
-      config
-    ): Promise<sharp.Sharp> => {
+      config,
+    ): Promise<Image> => {
       const convertDimension = instance.getAction('convertDimension');
       const width = config.width
         ? convertDimension(instance, config.width, metadata.width)
@@ -20,10 +19,10 @@ const PluginScaleCrop: Plugin = {
         : metadata.height;
       const gravity = config.gravity || 'center';
 
-      return new Promise<sharp.Sharp>((resolve, reject) => {
+      return new Promise<Image>((resolve, reject) => {
         try {
           resolve(
-            image.resize(width, height, { fit: 'cover', position: gravity })
+            image.resize(width, height, { fit: 'cover', position: gravity }),
           );
         } catch (e) {
           reject(e);

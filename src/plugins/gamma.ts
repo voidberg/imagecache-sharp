@@ -1,5 +1,4 @@
-import sharp from 'sharp';
-import { ImageCache, Plugin } from '../imagecache';
+import type { Image, ImageCache, Plugin } from '../imagecache';
 
 const PluginGamma: Plugin = {
   name: 'Gamma',
@@ -7,10 +6,10 @@ const PluginGamma: Plugin = {
   actions: {
     gamma: (
       instance: ImageCache,
-      image: sharp.Sharp,
+      image: Image,
       metadata: object,
-      config: { gamma: number }
-    ): sharp.Sharp => {
+      config: { gamma: number },
+    ): Image => {
       const gamma = config.gamma || 2.2;
 
       return image.gamma(gamma);

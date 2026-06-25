@@ -1,7 +1,7 @@
 import { ImageCache } from '../imagecache';
 import PluginConverter from './_converters';
 
-let imagecache;
+let imagecache: ImageCache;
 
 beforeAll(() => {
   imagecache = new ImageCache([]);

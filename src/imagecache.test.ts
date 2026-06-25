@@ -81,7 +81,7 @@ test('fails when the preset does not exist', () => {
 
   const imagecache = new ImageCache(presets);
   expect(
-    imagecache.render('./examples/in.png', 's_crop_smaller')
+    imagecache.render('./examples/in.png', 's_crop_smaller'),
   ).rejects.toThrow(`Preset s_crop_smaller could not be found.`);
 });
 
@@ -103,9 +103,9 @@ test('fails when the action does not exist in any preset', () => {
 
   const imagecache = new ImageCache(presets);
   expect(
-    imagecache.render('./examples/in.png', 's_crop_small')
+    imagecache.render('./examples/in.png', 's_crop_small'),
   ).rejects.toThrow(
-    `Action ${presets[0].actions[0].action} for preset ${presets[0].presetName} not found in loaded plugins.`
+    `Action ${presets[0].actions[0].action} for preset ${presets[0].presetName} not found in loaded plugins.`,
   );
 });
 
@@ -119,6 +119,6 @@ test('fails when the image does not exist', () => {
 
   const imagecache = new ImageCache(presets);
   expect(
-    imagecache.render('./examples/in_not_exists.png', 's_crop_small')
+    imagecache.render('./examples/in_not_exists.png', 's_crop_small'),
   ).rejects.toThrow(`File ./examples/in_not_exists.png does not exist.`);
 });

@@ -1,5 +1,4 @@
-import S from 'string';
-import { ImageCache, Plugin } from '../imagecache';
+import type { ImageCache, Plugin } from '../imagecache';
 
 const PluginConverter: Plugin = {
   name: 'Converter functions',
@@ -9,17 +8,17 @@ const PluginConverter: Plugin = {
     convertDimension: (
       instance: ImageCache,
       value: string | number,
-      maxDimension: number
+      maxDimension: number,
     ): number => {
       let converted: number;
 
-      if (S(value).endsWith('%')) {
+      if (String(value).endsWith('%')) {
         converted = ~~(
-          (maxDimension * S(value).replaceAll('%', '').toInt()) /
+          (maxDimension * parseInt(String(value).replace(/%/g, ''), 10)) /
           100
         );
       } else {
-        converted = S(value).toInt();
+        converted = parseInt(String(value), 10);
       }
 
       return Math.round(converted);
@@ -28,7 +27,7 @@ const PluginConverter: Plugin = {
       instance: ImageCache,
       value: string | number,
       maxPosition: number,
-      imageSize: number
+      imageSize: number,
     ): number => {
       let converted: number;
 
@@ -44,7 +43,7 @@ const PluginConverter: Plugin = {
         converted = instance.getAction('convertDimension')(
           instance,
           value,
-          maxPosition
+          maxPosition,
         );
       }
 

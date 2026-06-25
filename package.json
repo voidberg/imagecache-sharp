@@ -1,6 +1,6 @@
 {
   "name": "imagecache-sharp",
-  "version": "0.0.0-development",
+  "version": "2.1.0",
   "description": "Lightweight image generation module based on sharp and inspired by Drupal's image styles.",
   "keywords": [
     "sharp",
@@ -14,22 +14,37 @@
     "email": "andu@ctrlz.ro",
     "url": "http://alexandrubadiu.ro"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
-    "docs": "typedoc --entryPoints src/imagecache.ts",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "ts-node": "ts-node",
-    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
-    "build": "tsc -p tsconfig.json",
-    "clean": "rm -rf dist build",
-    "watch": "tsc -p tsconfig.json --watch",
-    "commit": "git-cz",
-    "semantic-release": "semantic-release"
+    "docs": "typedoc --entryPoints src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "build": "tsup",
+    "clean": "rm -rf dist"
   },
   "homepage": "https://github.com/voidberg/imagecache-sharp",
   "repository": {
@@ -41,42 +56,18 @@
     "url": "https://github.com/voidberg/imagecache-sharp/issues"
   },
   "readmeFilename": "README.md",
-  "release": {
-    "generateNotes": "./node_modules/@semantic-release/release-notes-generator",
-    "branches": [
-      "main",
-      "next",
-      "beta"
-    ]
-  },
   "dependencies": {
-    "sharp": "^0.32.6",
-    "string": "3.3.3"
+    "sharp": "^0.35.2"
   },
   "devDependencies": {
-    "@semantic-release/release-notes-generator": "^10.0.3",
-    "@types/jest": "^26.0.23",
-    "@types/jest-image-snapshot": "^4.3.0",
-    "@types/node": "^15.0.1",
-    "@types/sharp": "^0.28.0",
-    "@types/string": "^0.0.30",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "commitizen": "1.0.5",
-    "cz-conventional-changelog": "3.3.0",
-    "eslint": "^7.25.0",
-    "husky": "^0.13.4",
-    "jest": "^26.6.3",
-    "jest-image-snapshot": "^4.5.0",
-    "semantic-release": "^19.0.3",
-    "ts-jest": "^26.5.5",
-    "ts-node": "^9.1.1",
-    "typedoc": "^0.20.36",
-    "typescript": "^4.2.4"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "@biomejs/biome": "^2.5.1",
+    "@types/jest-image-snapshot": "^6.4.1",
+    "@types/node": "^24.13.2",
+    "@vitest/coverage-v8": "^4.1.9",
+    "jest-image-snapshot": "^6.5.2",
+    "tsup": "^8.5.1",
+    "typedoc": "^0.28.19",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.9"
   }
 }
