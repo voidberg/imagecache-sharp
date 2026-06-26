@@ -20,6 +20,10 @@ It was inspired by Drupal's [imagecache module](https://www.drupal.org/project/i
 
 Requires Node.js 20.9.0 or newer (the floor set by sharp 0.35).
 
+## Compatibility
+
+The core is [sharp](https://github.com/lovell/sharp), a native libvips addon, so this library is Node-first. It also runs on Bun (sharp loads through Node-API).
+
 ## Usage
 
 ```typescript

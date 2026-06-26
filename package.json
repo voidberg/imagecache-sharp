@@ -44,6 +44,7 @@
     "lint": "biome check .",
     "format": "biome format --write .",
     "build": "tsup",
+    "smoke": "node scripts/smoke.mjs",
     "clean": "rm -rf dist"
   },
   "homepage": "https://github.com/voidberg/imagecache-sharp",

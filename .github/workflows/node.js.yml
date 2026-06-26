@@ -46,3 +46,23 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./test-results.junit.xml
+
+  bun-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build package
+        run: npm run build
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Smoke test (Node)
+        run: node scripts/smoke.mjs
+      - name: Smoke test (Bun)
+        run: bun scripts/smoke.mjs
