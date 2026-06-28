@@ -62,7 +62,7 @@ An action contains an operation (which is defined by the plugins) and an optiona
 ```typescript
 type Action = {
   action: string;
-  config?: any;
+  config?: Record<string, unknown>;
 };
 ```
 
@@ -132,7 +132,9 @@ Configuration:
 - `width`: The width of the canvas.
 - `height`: The height of the canvas.
 - `channels`: Number of channels. Defaults to `4`.
-- `background`: The background colour of the canvas in hex format.
+- `color`: The background colour of the canvas in hex format. Defaults to `#ffffff00` (transparent).
+- `gravity`: Where to place the image on the canvas. Possible values are `north`, `northeast`, `east`, `southeast`, `south`, `southwest`, `west`, `northwest`, `center` and `centre`. Defaults to `center`.
+- `tile`: Set to true to repeat the image across the canvas. Defaults to `false`.
 
 ### File
 
@@ -204,6 +206,8 @@ Configuration:
 
 - `width`: The width of the new image. Can be a number or a percent value.
 - `height`: The height of the new image. Can be a number or a percent value.
+- `maxWidth`: Maximum width of a bounding box. Set together with `maxHeight` to scale the image to fit while keeping the aspect ratio. Can be a number or a percent value.
+- `maxHeight`: Maximum height of a bounding box. Set together with `maxWidth` to scale the image to fit while keeping the aspect ratio. Can be a number or a percent value.
 - `upscale`: Whether to upscale the image. Defaults to true.
 
 ### Scale and crop
