@@ -4,7 +4,7 @@
 [![Codecov](https://img.shields.io/codecov/c/gh/voidberg/imagecache-sharp)](https://codecov.io/github/voidberg/imagecache-sharp)
 [![MIT License](https://img.shields.io/npm/l/imagecache-sharp.svg)](https://opensource.org/licenses/MIT)
 
-![ImageCache Sharp](https://www.dropbox.com/s/7nedtm45o1d46k5/imagecache-small.png?raw=1)
+![ImageCache Sharp](assets/logo.png)
 
 ## What is it?
 
@@ -12,7 +12,7 @@ Imagecache Sharp is a node image processing library based on [sharp](https://git
 
 It was inspired by Drupal's [imagecache module](https://www.drupal.org/project/imagecache) (now called image styles), hence the name.
 
-<a href="https://www.dropbox.com/s/nhwzy0utvw2m0qe/imagecache-details.png?raw=1" target="_blank"><img src="https://www.dropbox.com/s/nhwzy0utvw2m0qe/imagecache-details.png?raw=1" alt="Imagecache workflow" width="100%" /></a>
+<a href="assets/workflow.png" target="_blank"><img src="assets/workflow.png" alt="Imagecache workflow" width="100%" /></a>
 
 ## Installation
 
