@@ -32,7 +32,6 @@
     "node": ">=20.9.0"
   },
   "scripts": {
-    "docs": "typedoc --entryPoints src/index.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -63,7 +62,6 @@
     "@vitest/coverage-v8": "^4.1.9",
     "jest-image-snapshot": "^6.5.2",
     "tsup": "^8.5.1",
-    "typedoc": "^0.28.19",
     "typescript": "^5.9.3",
     "vitest": "^4.1.9"
   }
